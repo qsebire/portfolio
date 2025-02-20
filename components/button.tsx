@@ -27,16 +27,19 @@ type buttonProps = VariantProps<typeof buttonVariants>;
 function Button({
     label,
     href,
+    target = '_self',
     type,
     size,
 }: buttonProps & {
     label: string;
     href: string;
+    target?: '_self' | '_blank';
 }) {
     return (
         <Link
             href={href}
             className={twMerge(buttonVariants({ type, size }))}
+            target={target}
         >
             {label}
         </Link>

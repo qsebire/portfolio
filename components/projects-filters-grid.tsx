@@ -15,6 +15,7 @@ function ProjectsFiltersGrid() {
         setFilters([...filters, filterName]);
     }
 
+    // Get categories used in projects without duplicates
     const projectsCategories = [
         ...new Set(
             PROJECTS.flatMap((project) => {
@@ -22,6 +23,16 @@ function ProjectsFiltersGrid() {
             })
         ),
     ];
+    // Sort categories by label
+    projectsCategories.sort((a, b) => {
+        if (a.label < b.label) {
+            return -1;
+        }
+        if (a.label > b.label) {
+            return 1;
+        }
+        return 0;
+    });
 
     const filtersDisplay = projectsCategories.map((cat, id) => {
         const isFiltered = filters.includes(cat.label);
@@ -32,12 +43,11 @@ function ProjectsFiltersGrid() {
                     isFiltered
                         ? {
                               borderColor: cat.color,
-                              backgroundColor: cat.color,
-                              color: '#020617',
+                              color: cat.color,
                           }
-                        : { borderColor: cat.color, color: cat.color }
+                        : undefined
                 }
-                className='block py-1 px-2 rounded text-base border'
+                className='block py-1 px-2 rounded text-base border hover:text-fuchsia-400 hover:border-fuchsia-400'
                 key={id}
             >
                 {cat.label}
@@ -52,22 +62,20 @@ function ProjectsFiltersGrid() {
         if (isFiltered || filters.length === 0) {
             return (
                 <ProjectCard
-                    imageSrc={project.imageSrc}
-                    imageAlt={project.imageAlt}
-                    title={project.title}
-                    catArr={project.catArr}
-                    description={project.description}
-                    link={project.link}
                     key={id}
+                    {...project}
                 />
             );
         }
     });
 
     return (
-        <div className='space-y-12'>
-            <div className='flex gap-2 justify-end items-end py-2'>
-                <p>Filtres :</p> {filtersDisplay}
+        <div className='space-y-16'>
+            <div className='flex justify-between items-end border-b border-white pb-2'>
+                <h2 className='text-8xl font-semibold'>Mes projets</h2>
+                <div className='flex gap-3 items-end flex-wrap pb-2'>
+                    <p>Filtres :</p> {filtersDisplay}
+                </div>
             </div>
             <div className='grid grid-cols-3 gap-12'>{projects}</div>
         </div>

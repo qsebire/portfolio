@@ -1,17 +1,31 @@
 import ProjectsFiltersGrid from '@/components/projects-filters-grid';
 import ArrowLink from '@/components/arrow-link';
 import AnimateChevronDown from '@/components/animate-chevron-down';
+import quentinSebire from '../public/images/quentin-sebire.jpg';
+import Image from 'next/image';
 
 export default function Home() {
     return (
         <div className='flex flex-col'>
             <div className='relative flex flex-col justify-center items-center min-h-[80vh] text-center'>
-                <h1 className='text-[180px] leading-[200px] font-semibold'>
+                <h1 className='text-[160px] leading-tight font-semibold z-10'>
                     Quentin Sébire
                 </h1>
-                <p className='text-4xl font-light text-cyan-500'>
+                <p className='text-4xl font-light text-fuchsia-400 z-10'>
                     Web Développeur Frontend
                 </p>
+                {/* <Image
+                    src={quentinSebire}
+                    alt='Quentin Sébire Web développeur Fronted'
+                    width={1920}
+                    height={1280}
+                    className='absolute z-0 h-full object-cover opacity-5'
+                /> */}
+                <Image
+                    src={quentinSebire}
+                    alt='Quentin Sébire Web développeur Fronted'
+                    className='absolute z-0 h-full w-auto -rotate-6 opacity-30 top-4'
+                />
                 <AnimateChevronDown anchor='#sommaire' />
             </div>
             <div
@@ -44,15 +58,24 @@ export default function Home() {
                 className='w-3/4 ml-auto py-32'
             >
                 <p className='text-4xl font-extralight leading-normal'>
-                    Bonjour, moi c'est Quentin, un Normand de 27 ans, installé à
-                    Bordeaux depuis mes études. Titulaire du titre RNCP :
-                    Concepteur développeur d'applications web et mobile et d’un
-                    master en UI/UX Design, je peux vous apporter une vision
-                    technique et créative. Mon parcours entrepreneurial et
-                    professionnel m’a permis de développer une grande
-                    adaptabilité et une approche pragmatique. Je suis passionné
-                    par la technologie, les mangas, et la musique. Curieux et
-                    polyvalent. j’aime explorer de nouveaux domaines et
+                    Bonjour, moi c'est Quentin, un{' '}
+                    <span className='font-normal text-fuchsia-400'>
+                        Normand de 27 ans
+                    </span>
+                    , installé à Bordeaux depuis mes études. Titulaire du titre
+                    RNCP :{' '}
+                    <span className='font-normal text-fuchsia-400'>
+                        Concepteur développeur d'applications web et mobile
+                    </span>{' '}
+                    et d’un master en{' '}
+                    <span className='font-normal text-fuchsia-400'>
+                        UI/UX Design
+                    </span>
+                    . Mon parcours entrepreneurial et professionnel m’a permis
+                    de développer une grande adaptabilité et une approche
+                    pragmatique et créative. Je suis passionné par la
+                    technologie, les mangas et la musique. Curieux et
+                    polyvalent, j’aime explorer de nouveaux domaines afin de
                     développer mes compétences.
                 </p>
             </div>
@@ -60,9 +83,6 @@ export default function Home() {
                 id='projets'
                 className='py-32'
             >
-                <h2 className='text-8xl font-semibold border-b border-white pb-2 mb-2'>
-                    Mes projets
-                </h2>
                 <ProjectsFiltersGrid />
             </div>
         </div>
