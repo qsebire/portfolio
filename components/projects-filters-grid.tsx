@@ -47,7 +47,7 @@ function ProjectsFiltersGrid() {
                           }
                         : undefined
                 }
-                className='block py-1 px-2 rounded text-base border hover:text-fuchsia-400 hover:border-fuchsia-400'
+                className='block py-1 px-2 rounded text-base border hover:text-fuchsia-500 hover:border-fuchsia-500'
                 key={id}
             >
                 {cat.label}

@@ -10,6 +10,10 @@ const buttonVariants = cva('rounded border inline-block font-semibold', {
             black: 'border-slate-950 bg-slate-950 text-white hover:text-slate-950 hover:bg-transparent',
             blackWhiteOutline:
                 'border-white bg-slate-950 text-white hover:text-slate-950 hover:bg-white',
+            purpleBg:
+                'border-fuchsia-500 bg-fuchsia-500 text-slate-950 hover:text-fuchsia-500 hover:bg-transparent',
+            purpleOutline:
+                'border-fuchsia-500 text-fuchsia-500 hover:text-slate-950 hover:bg-fuchsia-500',
         },
         size: {
             sm: 'py-1 px-4 text-sm',

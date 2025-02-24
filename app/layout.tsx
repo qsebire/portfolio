@@ -28,7 +28,7 @@ export default function RootLayout({
                 className={`${lexend.className} antialiased bg-slate-950 text-xl`}
             >
                 {/* <PatternBackground /> */}
-                <div className='min-h-screen flex flex-col justify-between pt-16 w-11/12 mx-auto z-10 relative'>
+                <div className='min-h-screen flex flex-col justify-between pt-16 w-11/12 mx-auto z-10 relative bg-slate-950 text-xl'>
                     <main>{children}</main>
                     <footer className='row-start-3 flex gap-6 flex-wrap items-center justify-center py-6'>
                         <a

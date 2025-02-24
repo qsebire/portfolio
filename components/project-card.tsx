@@ -1,5 +1,6 @@
 import Image, { StaticImageData } from 'next/image';
 import Button from './button';
+import Tag from './tag';
 import Link from 'next/link';
 import { projectType } from '@/data/projects';
 
@@ -14,13 +15,10 @@ function ProjectCard({
 }: projectType) {
     const categories = catArr.map((cat, id) => {
         return (
-            <p
-                style={{ borderColor: cat.color, color: cat.color }}
-                className='block py-1 px-2 rounded text-sm border'
-                key={id}
-            >
-                {cat.label}
-            </p>
+            <Tag
+                label={cat.label}
+                color={cat.color}
+            />
         );
     });
 
