@@ -1,5 +1,5 @@
 import { workExperienceType } from '@/data/work-experiences';
-import { CircleMinus, PlusCircle } from 'lucide-react';
+import { PlusCircle } from 'lucide-react';
 import { MouseEventHandler } from 'react';
 
 function WorkExperienceListSingle({

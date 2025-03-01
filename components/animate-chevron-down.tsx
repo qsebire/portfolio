@@ -11,8 +11,8 @@ function AnimateChevronDown({ anchor }: { anchor: string }) {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            setChevronTransitionCSS('size-12 opacity-100');
-        }, 2000);
+            setChevronTransitionCSS('size-12 opacity-40');
+        }, 6000);
         return () => clearTimeout(timer);
     }, []);
 
@@ -21,7 +21,7 @@ function AnimateChevronDown({ anchor }: { anchor: string }) {
             <ChevronDownCircle
                 strokeWidth={1}
                 className={twMerge(
-                    'absolute bottom-0 transition-all duration-700 animate-bounce ',
+                    'transition-all duration-700 animate-bounce',
                     chevronTransitionCSS
                 )}
             />

@@ -24,25 +24,45 @@ function WorkExperiences() {
     return (
         <div
             id='experiences-pros'
-            className='py-32 grid grid-cols-5 gap-20'
+            className='py-32 flex gap-20 relative'
         >
-            <div className='w-full space-y-8 col-span-2'>{workList}</div>
-            <div className='col-span-3 relative'>
-                {showDetails === null && (
-                    <h2 className='text-8xl font-semibold sticky top-1/2 transform -translate-y-1/2'>
-                        Expériences professionnelles
-                    </h2>
-                )}
+            <div
+                className='space-y-8 transition-all duration-500'
+                style={
+                    showDetails !== null ? { width: '30%' } : { width: '100%' }
+                }
+            >
+                {workList}
+            </div>
+            <div className='sticky top-1/2 transform -translate-y-1/2 h-fit'>
                 {showDetails !== null && (
-                    <div className='sticky top-0 h-full max-h-screen overflow-auto p-10 border flex flex-col justify-center'>
-                        <div className='m-auto'>
-                            <WorkExperienceDetails
-                                work={WORK_EXPERIENCES[showDetails]}
-                            />
-                        </div>
+                    <div
+                        className='p-10 border w-full'
+                        style={
+                            showDetails !== null ? { width: '70%' } : undefined
+                        }
+                    >
+                        <WorkExperienceDetails
+                            work={WORK_EXPERIENCES[showDetails]}
+                        />
                     </div>
                 )}
             </div>
+            <h2
+                className='text-8xl font-semibold sticky top-1/2 transform -translate-y-1/2 h-fit'
+                style={
+                    showDetails !== null
+                        ? {
+                              transform: 'rotate(90deg)',
+                              width: 0,
+                              opacity: 0.2,
+                              position: 'absolute',
+                          }
+                        : undefined
+                }
+            >
+                Expériences professionnelles
+            </h2>
         </div>
     );
 }

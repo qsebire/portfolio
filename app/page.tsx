@@ -1,27 +1,12 @@
 import ProjectsFiltersGrid from '@/components/projects-filters-grid';
 import ArrowLink from '@/components/arrow-link';
-import AnimateChevronDown from '@/components/animate-chevron-down';
-import quentinSebire from '../public/images/quentin-sebire.jpg';
-import Image from 'next/image';
 import WorkExperiences from '@/components/work-experiences';
+import HomeHero from '@/components/home-hero';
 
 export default function Home() {
     return (
         <div className='flex flex-col'>
-            <div className='relative flex flex-col justify-center items-center min-h-[80vh] text-center'>
-                <h1 className='text-[160px] leading-tight font-semibold z-10'>
-                    Quentin Sébire
-                </h1>
-                <p className='text-4xl font-light text-fuchsia-500 z-10'>
-                    Web Développeur Frontend
-                </p>
-                <Image
-                    src={quentinSebire}
-                    alt='Quentin Sébire Web développeur Fronted'
-                    className='absolute z-0 h-full w-auto -rotate-6 opacity-30 top-4'
-                />
-                <AnimateChevronDown anchor='#sommaire' />
-            </div>
+            <HomeHero />
             <div className='py-32 relative'>
                 <div
                     id='sommaire'
