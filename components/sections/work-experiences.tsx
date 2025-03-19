@@ -4,6 +4,7 @@ import { useState } from 'react';
 import WorkExperienceListSingle from './work-experience-list-single';
 import { WORK_EXPERIENCES } from '@/data/work-experiences';
 import WorkExperienceDetails from './work-experience-details';
+import BlockContainer from '../elements/block-container';
 
 function WorkExperiences() {
     const [showDetails, setShowDetails] = useState<number | null>(null);
@@ -22,7 +23,7 @@ function WorkExperiences() {
     });
 
     return (
-        <div
+        <BlockContainer
             id='experiences-pros'
             className='py-32 flex gap-20 relative'
         >
@@ -63,7 +64,7 @@ function WorkExperiences() {
             >
                 Expériences professionnelles
             </h2>
-        </div>
+        </BlockContainer>
     );
 }
 

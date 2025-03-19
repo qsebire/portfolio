@@ -1,6 +1,6 @@
 import Image, { StaticImageData } from 'next/image';
-import Button from './button';
-import Tag from './tag';
+import Button from '../elements/button';
+import Tag from '../elements/tag';
 import Link from 'next/link';
 import { projectType } from '@/data/projects';
 
@@ -16,6 +16,7 @@ function ProjectCard({
     const categories = catArr.map((cat, id) => {
         return (
             <Tag
+                key={id}
                 label={cat.label}
                 color={cat.color}
             />

@@ -1,8 +1,8 @@
 'use client';
 
 import { workExperienceType } from '@/data/work-experiences';
-import Tag from './tag';
-import Button from './button';
+import Tag from '../elements/tag';
+import Button from '../elements/button';
 
 function WorkExperienceDetails({ work }: { work: workExperienceType }) {
     const {

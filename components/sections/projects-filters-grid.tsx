@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import ProjectCard from './project-card';
 import { PROJECTS } from '@/data/projects';
+import BlockContainer from '../elements/block-container';
 
 function ProjectsFiltersGrid() {
     const [filters, setFilters] = useState<string[]>([]);
@@ -70,15 +71,22 @@ function ProjectsFiltersGrid() {
     });
 
     return (
-        <div className='space-y-16'>
-            <div className='flex justify-between items-end border-b border-white pb-2'>
-                <h2 className='text-8xl font-semibold'>Mes projets</h2>
+        <BlockContainer
+            id='projets'
+            className='space-y-16 py-32'
+        >
+            <div className='flex gap-8 justify-between items-end border-b border-white pb-2'>
+                <h2 className='text-8xl font-semibold text-nowrap'>
+                    Mes projets
+                </h2>
                 <div className='flex gap-3 items-end flex-wrap pb-2'>
                     <p>Filtres :</p> {filtersDisplay}
                 </div>
             </div>
-            <div className='grid grid-cols-3 gap-12'>{projects}</div>
-        </div>
+            <div className='grid grid-cols-2 md:grid-cols-3 gap-12'>
+                {projects}
+            </div>
+        </BlockContainer>
     );
 }
 
