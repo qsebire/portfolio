@@ -3,19 +3,47 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: #ffffff;
+    --foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+    }
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+    color: var(--foreground);
+    background: var(--background);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.text-with-white-stroke {
+    text-shadow:
+        2px 0 #fff,
+        -2px 0 #fff,
+        0 2px #fff,
+        0 -2px #fff,
+        1px 1px #fff,
+        -1px -1px #fff,
+        1px -1px #fff,
+        -1px 1px #fff;
+    color: rgba(0, 0, 0, 0);
+}
+
+@layer utilities {
+    @keyframes loop {
+        from {
+            transform: translateX(0%);
+        }
+        to {
+            transform: translateX(-50%);
+        }
+    }
+
+    .animate-loop {
+        animation: 20s loop linear infinite;
+    }
 }

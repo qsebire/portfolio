@@ -21,14 +21,14 @@ export default function RootLayout({
     return (
         <html
             lang='fr'
-            className='scroll-smooth'
+            className='scroll-smooth '
             suppressHydrationWarning
         >
             <body
-                className={`${montserrat.className} antialiased bg-slate-950 text-xl`}
+                className={`${montserrat.className} antialiased bg-[#090623]`}
             >
                 {/* <PatternBackground /> */}
-                <div className='min-h-screen flex flex-col justify-between z-10 relative bg-slate-950 text-xl'>
+                <div className='min-h-screen'>
                     <main>{children}</main>
                     <footer className='row-start-3 flex gap-6 flex-wrap items-center justify-center py-6'>
                         <a
