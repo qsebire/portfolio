@@ -22,10 +22,10 @@ export default function RootLayout({
         <html
             lang='fr'
             className='scroll-smooth '
-            suppressHydrationWarning
+            suppressHydrationWarning={false}
         >
             <body
-                className={`${montserrat.className} antialiased bg-[#090623]`}
+                className={`${montserrat.className} antialiased bg-background`}
             >
                 {/* <PatternBackground /> */}
                 <div className='min-h-screen'>

@@ -2,9 +2,9 @@
 
 import Image from 'next/image';
 import quentinSebire from '../../public/images/quentin-sebire.jpg';
-import { twMerge } from 'tailwind-merge';
 import { useEffect, useState } from 'react';
 import LoopTextsAnimation from '../elements/loop-texts-animation';
+import { cn } from '@/lib/utils';
 
 const LandingHero = () => {
     const jobList = [
@@ -51,7 +51,7 @@ const LandingHero = () => {
         setTimeout(() => {
             setImageStyle({
                 width: '',
-                height: '80%',
+                height: '70%',
                 opacity: 1,
                 transform: '',
             });
@@ -69,19 +69,19 @@ const LandingHero = () => {
             });
         }, 1500);
         setTimeout(() => {
-            setLoopStyle({ opacity: 0.6 });
-        }, 2500);
+            setLoopStyle({ opacity: 0.8 });
+        }, 1500);
     }, []);
 
     return (
         <div className='relative h-screen w-screen overflow-hidden'>
             <div
-                className='bg-[#090623] absolute z-50 bottom-0 left-1/2 -translate-x-1/2 w-full transition-all duration-[2s] ease-in-out'
+                className='absolute z-50 bottom-0 left-1/2 -translate-x-1/2 w-full transition-all duration-[2s] ease-in-out bg-background'
                 style={whiteBlockStyle}
             />
             <div className='h-full'>
                 <h1
-                    className={twMerge(cssTitle, 'z-20')}
+                    className={cn(cssTitle, 'z-20')}
                     style={leftTitleStyle}
                 >
                     Quentin
@@ -93,14 +93,14 @@ const LandingHero = () => {
                     style={imageStyle}
                 />
                 <h1
-                    className={twMerge(cssTitle, 'z-40')}
+                    className={cn(cssTitle, 'z-40')}
                     style={rightTitleStyle}
                 >
                     Sébire
                 </h1>
             </div>
             <div
-                className='absolute left-0 bottom-4 z-20 transition-all duration-[4s] ease-in-out'
+                className='absolute left-0 bottom-4 z-20 transition-all duration-[6s] ease-in-out'
                 style={loopStyle}
             >
                 <LoopTextsAnimation textArr={jobList} />

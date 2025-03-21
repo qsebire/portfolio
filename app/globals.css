@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 :root {
-    --background: #ffffff;
-    --foreground: #171717;
+    --background: #090623;
+    --foreground: white;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --background: #0a0a0a;
-        --foreground: #ededed;
+        --background: #090623;
+        --foreground: white;
     }
 }
 
@@ -20,17 +20,16 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.text-with-white-stroke {
+.text-with-pink-stroke {
     text-shadow:
-        2px 0 #fff,
-        -2px 0 #fff,
-        0 2px #fff,
-        0 -2px #fff,
-        1px 1px #fff,
-        -1px -1px #fff,
-        1px -1px #fff,
-        -1px 1px #fff;
-    color: rgba(0, 0, 0, 0);
+        2px 0 #db277811,
+        -2px 0 #db277811,
+        0 2px #db277811,
+        0 -2px #db277811,
+        1px 1px #db277811,
+        -1px -1px #db277811,
+        1px -1px #db277811,
+        -1px 1px #db277811;
 }
 
 @layer utilities {
@@ -45,5 +44,36 @@ body {
 
     .animate-loop {
         animation: 20s loop linear infinite;
+    }
+
+    @keyframes gradient-animation {
+        0% {
+            background-position: 0% 0%;
+        }
+        50% {
+            background-position: 100% 100%;
+        }
+        100% {
+            background-position: 0% 0%;
+        }
+    }
+
+    .gradient-background {
+        background:
+            url('/images/noise.svg'),
+            linear-gradient(
+                170deg,
+                #090623 20%,
+                #2e1065 30%,
+                #4a044e 35%,
+                #db2777 45%,
+                #db2777 55%,
+                #4a044e 65%,
+                #2e1065 70%,
+                #090623 80%
+            );
+        background-blend-mode: overlay;
+        background-size: 120% 120%;
+        animation: gradient-animation 40s linear infinite;
     }
 }
