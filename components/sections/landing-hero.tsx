@@ -1,10 +1,13 @@
 'use client';
 
-import Image from 'next/image';
-import quentinSebire from '../../public/images/quentin-sebire.jpg';
-import { useEffect, useState } from 'react';
-import LoopTextsAnimation from '../elements/loop-texts-animation';
+import { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
+
+import Image from 'next/image';
+import LoopTextsAnimation from '../elements/loop-texts-animation';
+import CursorButton from '../elements/cursor-button';
+
+import quentinSebire from '../../public/images/quentin-sebire.jpg';
 
 const LandingHero = () => {
     const jobList = [
@@ -16,29 +19,33 @@ const LandingHero = () => {
         'Web Designer',
     ];
 
+    const containerRef = useRef<HTMLDivElement>(null);
+
     const cssTitle =
         'text-[340px] font-semibold leading-none text-white transition-all duration-[1s] ease-in-out absolute';
 
     const [whiteBlockStyle, setWhiteBlockStyle] = useState({
         height: '100%',
     });
-    const [imageStyle, setImageStyle] = useState({
-        width: '0%',
-        height: '0%',
-        opacity: 0,
-        transform: 'rotate(0)',
-    });
-    const [leftTitleStyle, setLeftTitleStyle] = useState({
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, 0)',
-        opacity: 1,
-    });
-    const [rightTitleStyle, setRightTitleStyle] = useState({
-        bottom: '50%',
-        right: '50%',
-        transform: 'translate(50%, 0)',
-        opacity: 1,
+    const [styleAnimation, setStyleAnimation] = useState({
+        image: {
+            width: '0%',
+            height: '0%',
+            opacity: 0,
+            transform: 'rotate(0)',
+        },
+        leftTitle: {
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, 0)',
+            opacity: 1,
+        },
+        rightTitle: {
+            bottom: '50%',
+            right: '50%',
+            transform: 'translate(50%, 0)',
+            opacity: 1,
+        },
     });
     const [loopStyle, setLoopStyle] = useState({ opacity: 0 });
 
@@ -49,32 +56,42 @@ const LandingHero = () => {
             });
         }, 500);
         setTimeout(() => {
-            setImageStyle({
-                width: '',
-                height: '70%',
-                opacity: 1,
-                transform: '',
-            });
-            setLeftTitleStyle({
-                top: '15%',
-                left: '-24px',
-                transform: 'translate(0)',
-                opacity: 0.9,
-            });
-            setRightTitleStyle({
-                bottom: '15%',
-                right: '-24px',
-                transform: 'translate(0)',
-                opacity: 0.9,
+            setStyleAnimation({
+                image: {
+                    width: '',
+                    height: '70%',
+                    opacity: 1,
+                    transform: '',
+                },
+                leftTitle: {
+                    top: '15%',
+                    left: '-24px',
+                    transform: 'translate(0)',
+                    opacity: 0.9,
+                },
+                rightTitle: {
+                    bottom: '15%',
+                    right: '-24px',
+                    transform: 'translate(0)',
+                    opacity: 0.9,
+                },
             });
         }, 1500);
         setTimeout(() => {
-            setLoopStyle({ opacity: 0.8 });
+            setLoopStyle({ opacity: 1 });
         }, 1500);
     }, []);
 
     return (
-        <div className='relative h-screen w-screen overflow-hidden'>
+        <div
+            ref={containerRef}
+            className='relative h-screen w-screen overflow-hidden'
+        >
+            <CursorButton
+                href='#top'
+                content='Icon'
+                containerRef={containerRef}
+            />
             <div
                 className='absolute z-50 bottom-0 left-1/2 -translate-x-1/2 w-full transition-all duration-[2s] ease-in-out bg-background'
                 style={whiteBlockStyle}
@@ -82,19 +99,19 @@ const LandingHero = () => {
             <div className='h-full'>
                 <h1
                     className={cn(cssTitle, 'z-20')}
-                    style={leftTitleStyle}
+                    style={styleAnimation.leftTitle}
                 >
                     Quentin
                 </h1>
                 <Image
                     src={quentinSebire}
                     alt='Quentin Sébire Web développeur Fronted'
-                    className='absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-auto mix-blend-luminosity z-30 transition-all duration-[1s] ease-in-out hover:mix-blend-normal -rotate-6 hover:rotate-0'
-                    style={imageStyle}
+                    className='absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-auto mix-blend-luminosity z-30 transition-all duration-[1s] ease-in-out -rotate-6'
+                    style={styleAnimation.image}
                 />
                 <h1
                     className={cn(cssTitle, 'z-40')}
-                    style={rightTitleStyle}
+                    style={styleAnimation.rightTitle}
                 >
                     Sébire
                 </h1>

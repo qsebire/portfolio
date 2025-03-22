@@ -1,9 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import { BackgroundGradientAnimation } from '../ui/background-gradient-animation';
 import { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
+import CursorButton from '../elements/cursor-button';
 
 const AnimateButton = ({
     text,
@@ -13,7 +13,7 @@ const AnimateButton = ({
     animation?: 'animate-loopVertical' | 'animate-loopVerticalInverse';
 }) => {
     const textClasses =
-        'text-8xl font-semibold text-center transition-all duration-700 tracking-wider';
+        'text-8xl font-semibold text-center transition-all duration-[1s] tracking-wider';
 
     const containerRef = useRef<HTMLDivElement>(null);
     const textRef = useRef<HTMLParagraphElement>(null);
@@ -38,14 +38,17 @@ const AnimateButton = ({
         setRepeatedText(textArray);
     }, [text]);
 
-    console.log(repeatedText);
-
     return (
         <div
             ref={containerRef}
-            className='h-full overflow-hidden group hover:border-[64px] border-[#090623]/50 transition-all duration-1000'
+            className='h-full w-full overflow-hidden group hover:border-[64px] border-[#090623]/50 transition-all duration-[1s] relative'
         >
-            <div className='h-full w-full flex flex-col items-center justify-center  border-4 group-hover:border-white border-transparent group-hover:bg-transparent bg-[#090623]/50 transition-all duration-1000'>
+            <CursorButton
+                href='#top'
+                containerRef={containerRef}
+                gap={64}
+            />
+            <div className='h-full w-full flex flex-col items-center justify-center border-4 group-hover:border-white border-transparent group-hover:bg-transparent bg-[#090623]/50 transition-all duration-[1s]'>
                 <div
                     className={cn('h-fit group-hover:animate-none ', animation)}
                 >
@@ -89,7 +92,7 @@ const LandingRedirection = () => {
                 alt='grain'
                 className='pointer-events-none absolute top-0 left-0 mix-blend-overlay opacity-60'
             />
-            <div className='absolute w-full h-full z-50 grid grid-cols-2 items-center justify-center '>
+            <div className='h-full z-50 grid grid-cols-2 items-center justify-center '>
                 <AnimateButton text='PORTFOLIO' />
                 <AnimateButton
                     text='EXPÉRIENCES'
