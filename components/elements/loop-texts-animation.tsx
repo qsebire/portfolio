@@ -11,7 +11,7 @@ const LoopTextsAnimation = ({ textArr }: { textArr: string[] }) => {
                 className='flex gap-6 items-center'
             >
                 <p
-                    className='text-4xl font-light'
+                    className='text-3xl md:text-4xl font-light'
                     style={{ color: color }}
                 >
                     {text}

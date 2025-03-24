@@ -22,7 +22,7 @@ const LandingHero = () => {
     const containerRef = useRef<HTMLDivElement>(null);
 
     const cssTitle =
-        'text-[340px] font-semibold leading-none text-white transition-all duration-[1s] ease-in-out absolute';
+        'text-[100px] sm:text-[150px] md:text-[200px] lg:text-[250px] xl:text-[300px] 2xl:text-[340px] font-semibold leading-none text-white transition-all duration-[1s] ease-in-out absolute';
 
     const [whiteBlockStyle, setWhiteBlockStyle] = useState({
         height: '100%',
@@ -106,7 +106,7 @@ const LandingHero = () => {
                 <Image
                     src={quentinSebire}
                     alt='Quentin Sébire Web développeur Fronted'
-                    className='absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-auto mix-blend-luminosity z-30 transition-all duration-[1s] ease-in-out -rotate-6'
+                    className='absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-auto mix-blend-luminosity z-30 transition-all duration-[1s] ease-in-out -rotate-6 max-w-[65%] sm:max-w-[60%] object-contain'
                     style={styleAnimation.image}
                 />
                 <h1
