@@ -8,12 +8,14 @@ import CursorButton from '../elements/cursor-button';
 const AnimateButton = ({
     text,
     animation = 'animate-loopVertical',
+    href,
 }: {
     text: string;
     animation?: 'animate-loopVertical' | 'animate-loopVerticalInverse';
+    href: string;
 }) => {
     const textClasses =
-        'text-5xl sm:text-7xl md:text-8xl lg:text-6xl xl:text-[4rem] 2xl:text-7xl min-[1600px]:text-[5rem] min-[1800px]:text-8xl font-semibold text-center transition-all duration-[1s] tracking-wider';
+        'text-[12vw] lg:text-[6vw]  font-semibold text-center transition-all duration-[1s] tracking-wider leading-none';
 
     const containerRef = useRef<HTMLDivElement>(null);
     const textRef = useRef<HTMLParagraphElement>(null);
@@ -39,19 +41,19 @@ const AnimateButton = ({
     }, [text]);
 
     return (
-        <div className='h-full w-full overflow-hidden group max-lg:border-[32px] lg:hover:border-[64px] border-[#090623]/50 transition-all duration-[1s] relative'>
+        <div
+            ref={containerRef}
+            className='h-full w-full overflow-hidden group max-lg:border-[32px] lg:hover:border-[64px] border-[#090623]/50 transition-all duration-[1s] relative'
+        >
             <CursorButton
-                href='#top'
+                href={href}
                 containerRef={containerRef}
                 gap={64}
             />
-            <div
-                ref={containerRef}
-                className='h-full w-full flex flex-col items-center justify-center lg:bg-[#090623]/50 group-hover:bg-transparent transition-all duration-[1s]'
-            >
+            <div className='h-full w-full flex items-center justify-center lg:bg-[#090623]/50 group-hover:bg-transparent transition-all duration-[1s]'>
                 <div
                     className={cn(
-                        'h-fit lg:group-hover:animate-none ',
+                        'h-fit lg:group-hover:animate-none',
                         animation
                     )}
                 >
@@ -63,7 +65,7 @@ const AnimateButton = ({
                                 key={index}
                                 className={cn(
                                     textClasses,
-                                    'lg:group-hover:leading-[0px] leading-none opacity-10 lg:group-hover:opacity-0 lg:opacity-100'
+                                    'lg:group-hover:leading-[0px] opacity-10 lg:group-hover:opacity-0 lg:opacity-100'
                                 )}
                                 style={{
                                     color: textColor,
@@ -87,7 +89,7 @@ const AnimateButton = ({
     );
 };
 
-const LandingRedirection = () => {
+const RedirectPortfolioExperiences = () => {
     return (
         <div className='h-screen overflow-hidden relative gradient-background shadow-[0_-35px_48px_rgba(9,6,35,0.6)]'>
             <Image
@@ -98,14 +100,18 @@ const LandingRedirection = () => {
                 className='pointer-events-none absolute top-0 left-0 mix-blend-overlay opacity-60'
             />
             <div className='h-full z-50 grid grid-cols-1 lg:grid-cols-2 items-center justify-center '>
-                <AnimateButton text='PORTFOLIO' />
                 <AnimateButton
-                    text='EXPÉRIENCES'
+                    text='PORTFOLIO'
+                    href='/portfolio'
+                />
+                <AnimateButton
+                    text='PARCOURS'
                     animation='animate-loopVerticalInverse'
+                    href='/experiences'
                 />
             </div>
         </div>
     );
 };
 
-export default LandingRedirection;
+export default RedirectPortfolioExperiences;

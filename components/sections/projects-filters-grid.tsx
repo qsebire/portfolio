@@ -73,15 +73,10 @@ function ProjectsFiltersGrid() {
     return (
         <BlockContainer
             id='projets'
-            className='space-y-16 py-32'
+            className='space-y-16 py-32 z-40'
         >
-            <div className='flex gap-8 justify-between items-end border-b border-white pb-2'>
-                <h2 className='text-8xl font-semibold text-nowrap'>
-                    Mes projets
-                </h2>
-                <div className='flex gap-3 items-end flex-wrap pb-2'>
-                    <p>Filtres :</p> {filtersDisplay}
-                </div>
+            <div className='flex gap-3 items-end flex-wrap pb-2'>
+                <p>Filtres :</p> {filtersDisplay}
             </div>
             <div className='grid grid-cols-2 md:grid-cols-3 gap-12'>
                 {projects}

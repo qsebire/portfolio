@@ -1,6 +1,7 @@
 'use client';
 
 import { ArrowBigDown } from 'lucide-react';
+import Link from 'next/link';
 import { RefObject, useEffect, useState } from 'react';
 
 const CursorButton = ({

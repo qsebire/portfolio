@@ -63,7 +63,7 @@ export default {
                         transform: 'translateY(0%)',
                     },
                     '100%': {
-                        transform: 'translateY(-25%)',
+                        transform: 'translateY(-23.8%)',
                     },
                 },
                 loopVerticalInverse: {
@@ -71,7 +71,7 @@ export default {
                         transform: 'translateY(0%)',
                     },
                     '100%': {
-                        transform: 'translateY(25%)',
+                        transform: 'translateY(23.8%)',
                     },
                 },
             },

@@ -76,4 +76,24 @@ body {
         background-size: 120% 120%;
         animation: gradient-animation 40s linear infinite;
     }
+
+    .gradient-background-text {
+        background:
+            url('/images/noise.svg'),
+            linear-gradient(
+                170deg,
+                #090623 20%,
+                #2e1065 30%,
+                #4a044e 35%,
+                #db2777 50%,
+                #4a044e 65%,
+                #2e1065 70%,
+                #090623 80%
+            );
+        background-blend-mode: overlay;
+        background-size: 120% 120%;
+        animation: gradient-animation 40s linear infinite;
+        background-clip: text;
+        color: transparent;
+    }
 }

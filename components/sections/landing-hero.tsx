@@ -9,7 +9,7 @@ import CursorButton from '../elements/cursor-button';
 
 import quentinSebire from '../../public/images/quentin-sebire.jpg';
 
-const LandingHero = () => {
+const Hero = () => {
     const jobList = [
         'Développeur Web',
         'UI/UX Designer',
@@ -22,7 +22,7 @@ const LandingHero = () => {
     const containerRef = useRef<HTMLDivElement>(null);
 
     const cssTitle =
-        'text-[100px] sm:text-[150px] md:text-[200px] lg:text-[250px] xl:text-[300px] 2xl:text-[340px] font-semibold leading-none text-white transition-all duration-[1s] ease-in-out absolute';
+        'text-[23vw] md:text-[20vw] 2xl:text-[17vw]  font-semibold leading-none text-white transition-all duration-[1s] ease-in-out absolute';
 
     const [whiteBlockStyle, setWhiteBlockStyle] = useState({
         height: '100%',
@@ -126,4 +126,4 @@ const LandingHero = () => {
     );
 };
 
-export default LandingHero;
+export default Hero;

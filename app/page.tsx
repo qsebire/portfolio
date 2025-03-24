@@ -1,14 +1,14 @@
-import LandingHero from '@/components/sections/landing-hero';
-import LandingRedirection from '@/components/sections/landing-redirection';
+import Hero from '@/components/sections/landing-hero';
+import RedirectPortfolioExperiences from '@/components/sections/landing-redirection';
 
 export default function Home() {
     return (
         <div>
             <div className='sticky top-0 bg-background'>
-                <LandingHero />
+                <Hero />
             </div>
             <div id='top'>
-                <LandingRedirection />
+                <RedirectPortfolioExperiences />
             </div>
         </div>
     );
