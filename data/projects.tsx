@@ -8,7 +8,7 @@ import { StaticImageData } from 'next/image';
 
 export type projectType = {
     imageSrc: StaticImageData;
-    imageAlt?: string;
+    imageAlt: string;
     title: string;
     catArr: Category[];
     description: string;

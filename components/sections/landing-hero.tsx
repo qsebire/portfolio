@@ -11,12 +11,12 @@ import quentinSebire from '../../public/images/quentin-sebire.jpg';
 
 const Hero = () => {
     const jobList = [
+        'WordPress Intégrateur',
         'Développeur Web',
         'UI/UX Designer',
-        'Développeur Frontend',
-        'WordPress Intégrateur',
         'Développeur JavaScript',
         'Web Designer',
+        'Développeur Frontend',
     ];
 
     const containerRef = useRef<HTMLDivElement>(null);
@@ -66,13 +66,13 @@ const Hero = () => {
                 leftTitle: {
                     top: '15%',
                     left: '-24px',
-                    transform: 'translate(0)',
+                    transform: 'translate(0, 0)',
                     opacity: 0.9,
                 },
                 rightTitle: {
                     bottom: '15%',
                     right: '-24px',
-                    transform: 'translate(0)',
+                    transform: 'translate(0, 0)',
                     opacity: 0.9,
                 },
             });
@@ -117,7 +117,7 @@ const Hero = () => {
                 </h1>
             </div>
             <div
-                className='absolute left-0 bottom-4 z-20 transition-all duration-[6s] ease-in-out'
+                className='absolute left-0 bottom-4 z-20 transition-all duration-[4s] ease-in-out'
                 style={loopStyle}
             >
                 <LoopTextsAnimation textArr={jobList} />

@@ -2,11 +2,13 @@ import Link from 'next/link';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { twMerge } from 'tailwind-merge';
 
-const buttonVariants = cva('rounded border inline-block font-semibold', {
+const buttonVariants = cva('rounded border inline-block font-semibold w-fit', {
     variants: {
         type: {
             default:
                 'border-white bg-white text-slate-950 hover:text-white hover:bg-transparent',
+            outline:
+                'border-white bg-transparent text-white hover:text-background hover:bg-white',
             black: 'border-slate-950 bg-slate-950 text-white hover:text-slate-950 hover:bg-transparent',
             blackWhiteOutline:
                 'border-white bg-slate-950 text-white hover:text-slate-950 hover:bg-white',
@@ -18,6 +20,7 @@ const buttonVariants = cva('rounded border inline-block font-semibold', {
         size: {
             sm: 'py-1 px-4 text-sm',
             lg: 'py-[6px] px-6 text-base',
+            xl: 'py-[8px] px-8 text-xl',
         },
     },
     defaultVariants: {
