@@ -91,7 +91,7 @@ const AnimateButton = ({
 
 const RedirectPortfolioExperiences = () => {
     return (
-        <div className='h-screen overflow-hidden relative gradient-background'>
+        <div className='h-screen overflow-hidden relative gradient-background-animated'>
             <Image
                 src='/images/noise.svg'
                 width='1980'

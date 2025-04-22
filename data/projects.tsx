@@ -12,7 +12,7 @@ export type projectType = {
     title: string;
     catArr: Category[];
     description: string;
-    link: string;
+    link?: string;
     siteLink?: string;
 };
 
@@ -30,7 +30,6 @@ export const PROJECTS: projectType[] = [
         ],
         description:
             'Lucem est une application qui permet de faciliter les suivi des patients pour les psychlogues et psychiatres.',
-        link: '#',
     },
     {
         imageSrc: arrosiaImage,
@@ -44,7 +43,6 @@ export const PROJECTS: projectType[] = [
         ],
         description:
             "Réalisation d'un site vitrine et e-commerce pour une manufacture d'objet en résine de pin.",
-        link: '#',
         siteLink: 'https://arrosia.fr/',
     },
     {
@@ -59,7 +57,6 @@ export const PROJECTS: projectType[] = [
         ],
         description:
             "Réalisation d'un site vitrine et e-commerce de fleurs séchées.",
-        link: '#',
         siteLink: 'https://www.bloompoesie.fr/',
     },
     {
@@ -73,7 +70,6 @@ export const PROJECTS: projectType[] = [
         ],
         description:
             "Réalisation d'un site vitrine et e-commerce pour des architectes d'intérieur.",
-        link: '#',
         siteLink: 'https://lacremerie.fr/',
     },
     {
@@ -88,7 +84,6 @@ export const PROJECTS: projectType[] = [
         ],
         description:
             "Projet d'entraînement à l'utilisation d'une API externe & infinite scroll",
-        link: '#',
         siteLink:
             'https://pokedex-d4wxleqpi-quentins-projects-683360a5.vercel.app/',
     },

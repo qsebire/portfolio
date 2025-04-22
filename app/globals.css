@@ -58,7 +58,7 @@ body {
         }
     }
 
-    .gradient-background {
+    .gradient-background-animated {
         background:
             url('/images/noise.svg'),
             linear-gradient(
@@ -73,11 +73,26 @@ body {
                 #090623 80%
             );
         background-blend-mode: overlay;
-        background-size: 120% 120%;
+        background-size: 120vw 120vh;
         animation: gradient-animation 40s linear infinite;
     }
 
-    .gradient-background-text {
+    .gradient-background {
+        background:
+            url('/images/noise.svg'),
+            linear-gradient(
+                170deg,
+                #090623 20%,
+                #2e1065 30%,
+                #db2777 45%,
+                #db2777 55%,
+                #2e1065 70%,
+                #090623 80%
+            );
+        background-blend-mode: overlay;
+    }
+
+    .gradient-background-text-animated {
         background:
             url('/images/noise.svg'),
             linear-gradient(
@@ -91,9 +106,47 @@ body {
                 #090623 80%
             );
         background-blend-mode: overlay;
-        background-size: 120% 120%;
+        background-size: 120vw 120vh;
         animation: gradient-animation 40s linear infinite;
         background-clip: text;
         color: transparent;
+    }
+
+    .loader {
+        width: 160px;
+        aspect-ratio: 1;
+        padding: 10px;
+        box-sizing: border-box;
+        display: grid;
+        filter: blur(5px) contrast(10) hue-rotate(300deg);
+    }
+    .loader:before,
+    .loader:after {
+        content: '';
+        grid-area: 1/1;
+        width: 80px;
+        height: 80px;
+        background: #db2777;
+        animation: l7 2s infinite;
+    }
+    .loader:after {
+        animation-delay: -1s;
+    }
+    @keyframes l7 {
+        0% {
+            transform: translate(0, 0);
+        }
+        25% {
+            transform: translate(100%, 0);
+        }
+        50% {
+            transform: translate(100%, 100%);
+        }
+        75% {
+            transform: translate(0, 100%);
+        }
+        100% {
+            transform: translate(0, 0);
+        }
     }
 }

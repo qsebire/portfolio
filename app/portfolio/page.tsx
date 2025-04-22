@@ -1,11 +1,13 @@
 import Hero from '@/components/sections/portfolio-hero';
-import ProjectsFiltersGrid from '@/components/sections/projects-filters-grid';
-import { BackgroundGradientAnimation } from '@/components/ui/background-gradient-animation';
+import PortfolioProjects from '@/components/sections/portfolio-projects';
+import ContactForm from '@/components/sections/contact-form';
 
 export default function Portfolio() {
     return (
         <div>
             <Hero />
+            <PortfolioProjects />
+            <ContactForm />
         </div>
     );
 }
