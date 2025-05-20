@@ -1,17 +1,14 @@
 'use client';
 
 import { ArrowBigDown } from 'lucide-react';
-import Link from 'next/link';
 import { RefObject, useEffect, useState } from 'react';
 
 const CursorButton = ({
     content = 'Voir',
-    href,
     containerRef,
     gap = 0,
 }: {
     content?: 'Voir' | 'Icon';
-    href: string;
     containerRef: RefObject<HTMLDivElement | null>;
     gap?: number;
 }) => {
@@ -52,22 +49,19 @@ const CursorButton = ({
     }, [containerRef]);
 
     return (
-        <a
-            href={href}
-            className='absolute top-0 left-0 z-[999] transition-transform duration-0 cursor-none mix-blend-difference'
+        <div
+            className='border-2 border-white text-white aspect-square flex justify-center items-center rounded-full w-20 active:bg-white/20 absolute top-0 left-0 z-[999] transition-transform duration-0 cursor-none mix-blend-difference'
             style={{
                 transform: `translate(${cursorPosition.x}px, ${cursorPosition.y}px)`,
                 opacity: cursorOpacity,
             }}
         >
-            <div className='border-2 border-white text-white aspect-square flex justify-center items-center rounded-full w-20 active:bg-white/20'>
-                {content === 'Voir' ? (
-                    <p className='text-2xl font-semibold'>Voir</p>
-                ) : (
-                    <ArrowBigDown size={32} />
-                )}
-            </div>
-        </a>
+            {content === 'Voir' ? (
+                <p className='text-2xl font-semibold'>Voir</p>
+            ) : (
+                <ArrowBigDown size={32} />
+            )}
+        </div>
     );
 };
 

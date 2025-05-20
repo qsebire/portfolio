@@ -2,7 +2,7 @@ import { cn } from '@/lib/utils';
 import { cva, VariantProps } from 'class-variance-authority';
 
 const tagVariants = cva(
-    'block py-1 px-3 text-[16px] font-medium rounded-full',
+    'block py-1 px-3 text-[16px] font-medium rounded-full text-nowrap',
     {
         variants: {
             type: {

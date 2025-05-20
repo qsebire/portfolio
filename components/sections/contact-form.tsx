@@ -54,7 +54,7 @@ const ContactForm = () => {
     };
 
     return (
-        <div className='relative h-screen flex items-center justify-center bg-background'>
+        <div className='relative'>
             <form
                 className='space-y-4 w-full max-w-5xl'
                 onSubmit={handleSubmit}
@@ -104,9 +104,9 @@ const ContactForm = () => {
                     }}
                     required
                 />
-                <div className='flex items-center gap-2'>
+                <div className='flex justify-end'>
                     <button
-                        className='bg-white text-background font-semibold py-1 px-2 rounded cursor-pointer border border-white hover:bg-background hover:text-white'
+                        className='bg-pink-600 text-white text-[17px] font-semibold py-1 px-3 rounded cursor-pointer border border-pink-600 hover:bg-background hover:text-white'
                         disabled={loading}
                     >
                         Envoyer

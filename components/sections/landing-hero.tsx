@@ -22,7 +22,7 @@ const Hero = () => {
     const containerRef = useRef<HTMLDivElement>(null);
 
     const cssTitle =
-        'text-[23vw] md:text-[20vw] 2xl:text-[17vw]  font-semibold leading-none text-white transition-all duration-[1s] ease-in-out absolute';
+        'text-[23vw] md:text-[20vw] 2xl:text-[17vw] font-bold leading-none text-white transition-all duration-[1s] ease-in-out absolute';
 
     const [whiteBlockStyle, setWhiteBlockStyle] = useState({
         height: '100%',
@@ -83,46 +83,47 @@ const Hero = () => {
     }, []);
 
     return (
-        <div
-            ref={containerRef}
-            className='relative h-screen w-screen overflow-hidden'
-        >
-            <CursorButton
-                href='#top'
-                content='Icon'
-                containerRef={containerRef}
-            />
+        <a href='#top'>
             <div
-                className='absolute z-50 bottom-0 left-1/2 -translate-x-1/2 w-full transition-all duration-[2s] ease-in-out bg-background'
-                style={whiteBlockStyle}
-            />
-            <div className='h-full'>
-                <h1
-                    className={cn(cssTitle, 'z-20')}
-                    style={styleAnimation.leftTitle}
-                >
-                    Quentin
-                </h1>
-                <Image
-                    src={quentinSebire}
-                    alt='Quentin Sébire Web développeur Fronted'
-                    className='absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-auto mix-blend-luminosity z-30 transition-all duration-[1s] ease-in-out -rotate-6 max-w-[65%] sm:max-w-[60%] object-contain'
-                    style={styleAnimation.image}
-                />
-                <h1
-                    className={cn(cssTitle, 'z-40')}
-                    style={styleAnimation.rightTitle}
-                >
-                    Sébire
-                </h1>
-            </div>
-            <div
-                className='absolute left-0 bottom-4 z-20 transition-all duration-[4s] ease-in-out'
-                style={loopStyle}
+                ref={containerRef}
+                className='relative h-screen w-screen overflow-hidden'
             >
-                <LoopTextsAnimation textArr={jobList} />
+                <CursorButton
+                    content='Icon'
+                    containerRef={containerRef}
+                />
+                <div
+                    className='absolute z-50 bottom-0 left-1/2 -translate-x-1/2 w-full transition-all duration-[2s] ease-in-out bg-background'
+                    style={whiteBlockStyle}
+                />
+                <div className='h-full'>
+                    <h1
+                        className={cn(cssTitle, 'z-20')}
+                        style={styleAnimation.leftTitle}
+                    >
+                        Quentin
+                    </h1>
+                    <Image
+                        src={quentinSebire}
+                        alt='Quentin Sébire Web développeur Fronted'
+                        className='absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-auto mix-blend-luminosity z-30 transition-all duration-[1s] ease-in-out -rotate-6 max-w-[65%] sm:max-w-[60%] object-contain'
+                        style={styleAnimation.image}
+                    />
+                    <h1
+                        className={cn(cssTitle, 'z-40')}
+                        style={styleAnimation.rightTitle}
+                    >
+                        Sébire
+                    </h1>
+                </div>
+                <div
+                    className='absolute left-0 bottom-4 z-20 transition-all duration-[4s] ease-in-out'
+                    style={loopStyle}
+                >
+                    <LoopTextsAnimation textArr={jobList} />
+                </div>
             </div>
-        </div>
+        </a>
     );
 };
 

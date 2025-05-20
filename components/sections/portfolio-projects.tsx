@@ -2,49 +2,50 @@
 
 import { useState } from 'react';
 
-import slugify from '@/lib/slugify';
-
 import Tag from '../elements/tag';
 import Button from '../elements/button';
 import Image from 'next/image';
 
-import { PROJECTS, projectType } from '@/data/projects';
-import { cn } from '@/lib/utils';
+import { projectType } from '@/data/projects';
+import { cn, slugify } from '@/lib/utils';
 import Link from 'next/link';
 
 const ProjectTitleAnimation = ({ title }: { title: string }) => {
     const sharedBlockStyle =
         'bg-background h-1/2 relative z-20 transition-all ease-in-out duration-[800ms] shadow-2xl group-hover:delay-200';
     const sharedTitleStyle =
-        'text-[200px] leading-[200px] font-bold text-center text-nowrap';
+        'text-[10vw] leading-[10vw] font-bold text-center text-nowrap';
 
     return (
-        <>
+        <div className='absolute w-full h-full left-0 top-0'>
             <div
                 className={cn(
                     sharedBlockStyle,
                     'group-hover:-translate-y-full'
                 )}
             >
-                <div className='w-full h-[110px] overflow-hidden absolute bottom-0 '>
+                <div className='w-full h-[5.5vw] overflow-hidden absolute bottom-0 '>
                     <p className={sharedTitleStyle}>{title}</p>
                 </div>
             </div>
             <div
                 className={cn(sharedBlockStyle, 'group-hover:translate-y-full')}
             >
-                <div className='w-full h-[90px] overflow-hidden absolute top-0'>
-                    <p className={cn(sharedTitleStyle, '-mt-[110px]')}>
+                <div className='w-full h-[4.5vw] overflow-hidden absolute top-0'>
+                    <p className={cn(sharedTitleStyle, '-mt-[5.5vw]')}>
                         {title}
                     </p>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 
 const ProjectInnerContent = ({ project }: { project: projectType }) => {
-    const categories = project.catArr.map((cat, id) => {
+    const { catArr, link, siteLink, imageSrc, imageAlt, description, title } =
+        project;
+
+    const categories = catArr.map((cat, id) => {
         return (
             <Tag
                 key={id}
@@ -56,55 +57,53 @@ const ProjectInnerContent = ({ project }: { project: projectType }) => {
     });
 
     return (
-        <div className='absolute top-0 left-0 w-full h-full z-10 p-10 gradient-background grid grid-cols-5 gap-10 items-center'>
-            <div className='w-full h-full overflow-hidden col-span-3'>
-                {project.link ||
-                    (project.siteLink && (
+        <div className='h-full z-10 p-10 gradient-background grid lg:grid-cols-2 xl:grid-cols-7 gap-10 items-center'>
+            <div className='w-full h-full overflow-hidden xl:col-span-4 row-start-2 lg:row-start-1'>
+                {link ||
+                    (siteLink && (
                         <Link
-                            href={
-                                project.link ? project.link : project.siteLink
-                            }
+                            href={link ? link : siteLink}
                             target='_blank'
                         >
                             <Image
-                                src={project.imageSrc}
-                                alt={project.imageAlt}
-                                width={800}
-                                height={400}
-                                className='object-contain w-full h-full object-center'
+                                src={imageSrc}
+                                alt={imageAlt}
+                                width={1440}
+                                height={960}
+                                className='object-contain w-full h-full object-center max-h-[60vh]'
                             />
                         </Link>
                     ))}
-                {!project.link && !project.siteLink && (
+                {!link && !siteLink && (
                     <Image
-                        src={project.imageSrc}
-                        alt={project.imageAlt}
-                        width={800}
-                        height={400}
-                        className='object-contain w-full h-full object-center'
+                        src={imageSrc}
+                        alt={imageAlt}
+                        width={1440}
+                        height={960}
+                        className='object-contain w-full h-full object-center max-h-[30vh] lg:max-h-full'
                     />
                 )}
             </div>
-            <div className='space-y-5 col-span-2'>
-                <h2 className='text-5xl font-bold'>{project.title}</h2>
-                <div className='space-y-2'>
-                    <div className='flex gap-2'>{categories}</div>
-                    <p className='text-xl font-medium leading-snug'>
-                        {project.description}
+            <div className='space-y-6 xl:col-span-3 row-start-1'>
+                <div className='space-y-3'>
+                    <h2 className='text-4xl sm:text-4xl font-bold'>{title}</h2>
+                    <p className='text-lg sm:text-xl font-medium leading-snug'>
+                        {description}
                     </p>
                 </div>
+                <div className='flex gap-2 flex-wrap'>{categories}</div>
                 <div className='flex gap-3'>
-                    {project.link && (
+                    {link && (
                         <Button
                             label='Découvrir'
-                            href={project.link}
+                            href={link}
                             type='black'
                         />
                     )}
-                    {project.siteLink && (
+                    {siteLink && (
                         <Button
                             label='Voir le site'
-                            href={project.siteLink}
+                            href={siteLink}
                             type='black'
                             target='_blank'
                         />
@@ -121,7 +120,7 @@ const Project = ({ project }: { project: projectType }) => {
             id={slugify(project.title)}
             className='scroll-mt-[20vh]'
         >
-            <div className='relative h-[60vh] overflow-hidden group border-t last:border-b border-white'>
+            <div className='relative lg:h-[70vh] overflow-hidden group border-t last:border-b border-white'>
                 <ProjectTitleAnimation title={project.title} />
                 <ProjectInnerContent project={project} />
             </div>
@@ -129,7 +128,7 @@ const Project = ({ project }: { project: projectType }) => {
     );
 };
 
-const PortfolioProjects = () => {
+const PortfolioProjects = ({ projects }: { projects: projectType[] }) => {
     const [filters, setFilters] = useState<string[]>([]);
 
     function handleFilter(filterName: string) {
@@ -143,7 +142,7 @@ const PortfolioProjects = () => {
     // Get categories used in projects without duplicates
     const projectsCategories = [
         ...new Set(
-            PROJECTS.flatMap((project) => {
+            projects.flatMap((project) => {
                 return project.catArr;
             })
         ),
@@ -180,7 +179,7 @@ const PortfolioProjects = () => {
         );
     });
 
-    const projects = PROJECTS.map((project, index) => {
+    const displayedProjects = projects.map((project, index) => {
         const isFiltered = project.catArr.some((cat) =>
             filters.includes(cat.label)
         );
@@ -195,13 +194,13 @@ const PortfolioProjects = () => {
     });
 
     return (
-        <div className='relative mt-10'>
+        <div className='relative -mt-[60px]'>
             <div className='flex justify-center items-center gap-3 flex-wrap p-2 border-[0.5px] border-white sticky top-[calc(100vh-60px)] z-50 bg-background w-fit m-auto rounded-full'>
                 <p className='text-lg font-medium ml-4'>Filtres :</p>
                 {filtersDisplay}
             </div>
-            {projects}
-            <div className='h-[20vh]' />
+            {displayedProjects}
+            <div className='relative h-[60px] z-[60] bg-background' />
         </div>
     );
 };

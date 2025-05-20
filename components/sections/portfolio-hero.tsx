@@ -2,12 +2,11 @@
 
 import { useRef } from 'react';
 
-import slugify from '@/lib/slugify';
-
 import Image from 'next/image';
 import CursorButton from '../elements/cursor-button';
 
-import { PROJECTS, projectType } from '@/data/projects';
+import { projectType } from '@/data/projects';
+import { slugify } from '@/lib/utils';
 
 const ProjectImage = (project: projectType) => {
     const { imageSrc, imageAlt } = project;
@@ -23,56 +22,72 @@ const ProjectImage = (project: projectType) => {
     );
 };
 
-const ProjectsImages = () => {
-    const columnCount = 3;
+const COLUMN_COUNT = 3;
+const MAX_DISPLAYED = 6;
 
-    const displayedProjects =
-        PROJECTS.length > 6 ? PROJECTS.slice(0, 6) : PROJECTS;
+const ProjectsImages = ({ projects }: { projects: projectType[] }) => {
+    const displayedProjects = projects.slice(0, MAX_DISPLAYED);
 
-    const projectImages = displayedProjects.map((project, index) => {
-        const containerRef = useRef(null);
-
+    const rotationForIndex = (index: number): number => {
         const baseRotation = 14;
-        const rotationByIndex = (index % columnCount) * baseRotation;
-        const rotationByRow =
-            index >= columnCount
-                ? baseRotation - rotationByIndex
-                : -baseRotation + rotationByIndex;
-
-        return (
-            <div
-                ref={containerRef}
-                style={{ rotate: rotationByRow + 'deg' }}
-                className='peer'
-                key={index}
-            >
-                <CursorButton
-                    containerRef={containerRef}
-                    href={'#' + slugify(project.title)}
-                    content='Icon'
-                />
-                <ProjectImage {...project} />
-            </div>
-        );
-    });
+        const rotationByIndex = (index % COLUMN_COUNT) * baseRotation;
+        return index >= COLUMN_COUNT
+            ? baseRotation - rotationByIndex
+            : -baseRotation + rotationByIndex;
+    };
 
     return (
         <div
             className='grid content-center items-center gap-[10vw] px-20 absolute top-0 left-0 w-full h-full grid-cols-3'
-            style={{ gridTemplateColumns: `repeat(${columnCount}, 1fr)` }}
+            style={{ gridTemplateColumns: `repeat(${COLUMN_COUNT}, 1fr)` }}
         >
-            {projectImages}
+            {displayedProjects.map((project, index) => {
+                const containerRef = useRef(null);
+                const rotation = rotationForIndex(index);
+
+                return (
+                    <a
+                        href={'#' + slugify(project.title)}
+                        key={project.title}
+                    >
+                        <div
+                            ref={containerRef}
+                            style={{ rotate: rotation + 'deg' }}
+                            className='peer'
+                        >
+                            <CursorButton
+                                containerRef={containerRef}
+                                content='Voir'
+                            />
+                            <ProjectImage {...project} />
+                        </div>
+                    </a>
+                );
+            })}
         </div>
     );
 };
 
-const Hero = () => {
+const Hero = ({ projects }: { projects: projectType[] }) => {
     return (
-        <div className='relative bg-background'>
-            <div className='h-screen sticky top-0 w-full flex justify-center items-center text-[20vw] font-bold gradient-background-text-animated text-center pointer-events-none z-10'>
-                <h1>Portfolio</h1>
+        <div className='relative gradient-background-animated'>
+            <div className='relative z-10 py-40 xl:h-screen w-full flex justify-center items-center pointer-events-none'>
+                <h1 className='text-[16.5vw] font-bold text-center text-nowrap z-20 text-white'>
+                    Réalisations
+                </h1>
+                <p
+                    className='absolute text-[16.5vw] font-bold text-center text-nowrap text-background z-10 gradient-background-text-animated'
+                    style={{
+                        WebkitTextStroke: 6,
+                        WebkitTextStrokeColor: '#db2777',
+                    }}
+                >
+                    Réalisations
+                </p>
             </div>
-            <ProjectsImages />
+            <div className='hidden xl:block'>
+                <ProjectsImages projects={projects} />
+            </div>
         </div>
     );
 };

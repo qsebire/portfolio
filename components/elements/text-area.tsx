@@ -1,12 +1,7 @@
 'use client';
 
-import {
-    forwardRef,
-    HTMLInputAutoCompleteAttribute,
-    useCallback,
-    useState,
-} from 'react';
-import slugify from '@/lib/slugify';
+import { forwardRef, useCallback, useState } from 'react';
+import { slugify } from '@/lib/utils';
 
 type TextAreaPorps = {
     label: string;

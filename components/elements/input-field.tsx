@@ -1,7 +1,7 @@
 'use client';
 
 import { forwardRef, useCallback, useState } from 'react';
-import slugify from '@/lib/slugify';
+import { slugify } from '@/lib/utils';
 
 const REGEX_PATTERNS = {
     tel: /^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/,
@@ -139,7 +139,7 @@ const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
                 {inputState.error && (
                     <p
                         id={errorId}
-                        className='text-red-500 pt-1'
+                        className='text-red-500 pt-1 z-20 relative'
                     >
                         {inputState.errorMessage}
                     </p>

@@ -4,8 +4,9 @@ import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 import CursorButton from '../elements/cursor-button';
+import Link from 'next/link';
 
-const AnimateButton = ({
+const RedirectionSection = ({
     text,
     animation = 'animate-loopVertical',
     href,
@@ -45,46 +46,51 @@ const AnimateButton = ({
             ref={containerRef}
             className='h-full w-full overflow-hidden group max-lg:border-[32px] lg:hover:border-[64px] border-[#090623]/50 transition-all duration-[1s] relative'
         >
-            <CursorButton
+            <Link
                 href={href}
-                containerRef={containerRef}
-                gap={64}
-            />
-            <div className='h-full w-full flex items-center justify-center lg:bg-[#090623]/50 group-hover:bg-transparent transition-all duration-[1s]'>
-                <div
-                    className={cn(
-                        'h-fit lg:group-hover:animate-none',
-                        animation
-                    )}
-                >
-                    {repeatedText.map((t, index) => {
-                        const textColor = index % 2 === 0 ? '#db2777' : 'white';
+                className='h-full w-full'
+            >
+                <CursorButton
+                    containerRef={containerRef}
+                    gap={64}
+                />
+                <div className='h-full w-full flex items-center justify-center lg:bg-[#090623]/50 group-hover:bg-transparent transition-all duration-[1s]'>
+                    <div
+                        className={cn(
+                            'h-fit lg:group-hover:animate-none',
+                            animation
+                        )}
+                    >
+                        {repeatedText.map((t, index) => {
+                            const textColor =
+                                index % 2 === 0 ? '#db2777' : 'white';
 
-                        return (
-                            <p
-                                key={index}
-                                className={cn(
-                                    textClasses,
-                                    'lg:group-hover:leading-[0px] opacity-10 lg:group-hover:opacity-0 lg:opacity-100'
-                                )}
-                                style={{
-                                    color: textColor,
-                                }}
-                            >
-                                {t}
-                            </p>
-                        );
-                    })}
+                            return (
+                                <p
+                                    key={index}
+                                    className={cn(
+                                        textClasses,
+                                        'lg:group-hover:leading-[0px] opacity-10 lg:group-hover:opacity-0 lg:opacity-100'
+                                    )}
+                                    style={{
+                                        color: textColor,
+                                    }}
+                                >
+                                    {t}
+                                </p>
+                            );
+                        })}
+                    </div>
                 </div>
-            </div>
-            <div className='absolute top-0 left-0 z-50 h-full w-full flex flex-col items-center justify-center border-4 border-white bg-transparent transition-all duration-[1s] lg:opacity-0 lg:group-hover:opacity-100'>
-                <p
-                    ref={textRef}
-                    className={textClasses}
-                >
-                    {text}
-                </p>
-            </div>
+                <div className='absolute top-0 left-0 z-50 h-full w-full flex flex-col items-center justify-center border-4 border-white bg-transparent transition-all duration-[1s] lg:opacity-0 lg:group-hover:opacity-100'>
+                    <p
+                        ref={textRef}
+                        className={textClasses}
+                    >
+                        {text}
+                    </p>
+                </div>
+            </Link>
         </div>
     );
 };
@@ -99,13 +105,13 @@ const RedirectPortfolioExperiences = () => {
                 alt='grain'
                 className='pointer-events-none absolute top-0 left-0 mix-blend-overlay opacity-60'
             />
-            <div className='h-full z-50 grid grid-cols-1 lg:grid-cols-2 items-center justify-center '>
-                <AnimateButton
-                    text='PORTFOLIO'
-                    href='/portfolio'
+            <div className='h-full z-50 grid grid-cols-1 lg:grid-cols-2'>
+                <RedirectionSection
+                    text='Réalisations'
+                    href='/realisations'
                 />
-                <AnimateButton
-                    text='PARCOURS'
+                <RedirectionSection
+                    text='Qui suis-je ?'
                     animation='animate-loopVerticalInverse'
                     href='/experiences'
                 />
