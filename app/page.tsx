@@ -1,6 +1,5 @@
 import Hero from '@/components/sections/landing-hero';
 import HeroRealisations from '@/components/sections/portfolio-hero';
-import RedirectPortfolioExperiences from '@/components/sections/landing-redirection';
 import PortfolioProjects from '@/components/sections/portfolio-projects';
 import ContactSection from '@/components/sections/contact-section';
 
@@ -20,7 +19,6 @@ export default function Home() {
                 id='top'
                 className='bg-background z-10 relative'
             >
-                {/* <RedirectPortfolioExperiences /> */}
                 <HeroRealisations projects={shuffledProjects} />
                 <PortfolioProjects projects={shuffledProjects} />
                 <ContactSection />

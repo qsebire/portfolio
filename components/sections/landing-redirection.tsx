@@ -30,7 +30,7 @@ const RedirectionSection = ({
 
         if (textHeight === 0) return;
 
-        let textArray: string[] = [];
+        const textArray: string[] = [];
         let count = 0;
 
         while (count * textHeight < containerHeight * 2) {

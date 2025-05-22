@@ -8,17 +8,36 @@ import CursorButton from '../elements/cursor-button';
 import { projectType } from '@/data/projects';
 import { slugify } from '@/lib/utils';
 
-const ProjectImage = (project: projectType) => {
+const ProjectImage = ({
+    project,
+    rotation,
+}: {
+    project: projectType;
+    rotation: number;
+}) => {
     const { imageSrc, imageAlt } = project;
+    const containerRef = useRef(null);
 
     return (
-        <Image
-            src={imageSrc}
-            alt={imageAlt}
-            width={800}
-            height={800}
-            className='max-h-[40vh] object-contain'
-        />
+        <a href={'#' + slugify(project.title)}>
+            <div
+                ref={containerRef}
+                style={{ rotate: rotation + 'deg' }}
+                className='peer'
+            >
+                <CursorButton
+                    containerRef={containerRef}
+                    content='Voir'
+                />
+                <Image
+                    src={imageSrc}
+                    alt={imageAlt}
+                    width={800}
+                    height={800}
+                    className='max-h-[40vh] object-contain'
+                />
+            </div>
+        </a>
     );
 };
 
@@ -42,26 +61,14 @@ const ProjectsImages = ({ projects }: { projects: projectType[] }) => {
             style={{ gridTemplateColumns: `repeat(${COLUMN_COUNT}, 1fr)` }}
         >
             {displayedProjects.map((project, index) => {
-                const containerRef = useRef(null);
                 const rotation = rotationForIndex(index);
 
                 return (
-                    <a
-                        href={'#' + slugify(project.title)}
+                    <ProjectImage
+                        rotation={rotation}
+                        project={project}
                         key={project.title}
-                    >
-                        <div
-                            ref={containerRef}
-                            style={{ rotate: rotation + 'deg' }}
-                            className='peer'
-                        >
-                            <CursorButton
-                                containerRef={containerRef}
-                                content='Voir'
-                            />
-                            <ProjectImage {...project} />
-                        </div>
-                    </a>
+                    />
                 );
             })}
         </div>

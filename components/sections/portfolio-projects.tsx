@@ -237,12 +237,12 @@ const PortfolioProjects = ({ projects }: { projects: projectType[] }) => {
 
     return (
         <div className='relative'>
-            <div className='hidden justify-center items-center gap-3 flex-wrap p-2 border-[0.5px] border-white sticky top-[calc(100vh-60px)] z-50 bg-background w-fit m-auto rounded-full'>
+            <div className='hidden lg:flex justify-center items-center gap-3 flex-wrap p-2 border-[0.5px] border-white sticky top-[calc(100vh-60px)] z-50 bg-background w-fit m-auto rounded-full'>
                 <p className='text-lg font-medium ml-4'>Filtres :</p>
                 {filtersDisplay}
             </div>
-            {displayedProjects}
-            <div className='relative h-[60px] z-[60] bg-background' />
+            <div className='lg:-mt-12'>{displayedProjects}</div>
+            <div className='relative h-[60px] z-[60] bg-background -mb-[60px]' />
         </div>
     );
 };
