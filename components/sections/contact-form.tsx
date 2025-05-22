@@ -51,11 +51,14 @@ const ContactForm = () => {
                 message: formRefs.current.message.value,
             });
         } catch (error) {
-            console.log(error);
-            setInfoMessage('errorGif');
-            setTimeout(() => {
-                setInfoMessage('errorMessage');
-            }, 2500);
+            if (error) {
+                console.log(error);
+                setInfoMessage('errorGif');
+                setTimeout(() => {
+                    setInfoMessage('errorMessage');
+                }, 2500);
+                return;
+            }
         } finally {
             setInfoMessage('sendGif');
             setTimeout(() => {
