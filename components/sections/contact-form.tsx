@@ -54,7 +54,7 @@ const ContactForm = () => {
             });
         } catch (error) {
             hasSendingError = true;
-            console.log('coucou' + error);
+            console.log('Sending error' + error);
             setInfoMessage('errorGif');
             setTimeout(() => {
                 setInfoMessage('errorMessage');
