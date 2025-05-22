@@ -4,9 +4,13 @@ import { useEffect, useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import InputField from '../elements/input-field';
 import TextArea from '../elements/text-area';
+import Image from 'next/image';
+import Button from '../elements/button';
 
 const ContactForm = () => {
-    const [loading, setLoading] = useState(false);
+    const [infoMessage, setInfoMessage] = useState<string | undefined>(
+        undefined
+    );
 
     const formRefs = useRef({
         name: null as HTMLInputElement | null,
@@ -38,7 +42,7 @@ const ContactForm = () => {
         const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
 
         try {
-            setLoading(true);
+            setInfoMessage('loading');
             await emailjs.send(serviceId, templateId, {
                 name: formRefs.current.name.value,
                 email: formRefs.current.email.value,
@@ -47,9 +51,15 @@ const ContactForm = () => {
                 message: formRefs.current.message.value,
             });
         } catch (error) {
-            console.log(error);
+            setInfoMessage('errorGif');
+            setTimeout(() => {
+                setInfoMessage('errorMessage');
+            }, 2500);
         } finally {
-            setLoading(false);
+            setInfoMessage('sendGif');
+            setTimeout(() => {
+                setInfoMessage('sendMessage');
+            }, 4000);
         }
     };
 
@@ -57,6 +67,7 @@ const ContactForm = () => {
         <div className='relative'>
             <form
                 className='space-y-4 w-full max-w-5xl'
+                style={infoMessage ? { opacity: 0 } : undefined}
                 onSubmit={handleSubmit}
             >
                 <InputField
@@ -107,20 +118,66 @@ const ContactForm = () => {
                 <div className='flex justify-end'>
                     <button
                         className='bg-pink-600 text-white text-[17px] font-semibold py-1 px-3 rounded cursor-pointer border border-pink-600 hover:bg-background hover:text-white'
-                        disabled={loading}
+                        disabled={infoMessage !== undefined}
                     >
                         Envoyer
                     </button>
                 </div>
             </form>
-            {loading && (
-                <div className='absolute top-0 left-0 w-full h-full z-10 flex items-center justify-center flex-col'>
-                    <div className='absolute top-0 left-0 bg-background w-full h-full z-10 opacity-80 flex items-center justify-center'>
-                        <div className='loader' />
-                    </div>
-                    <p className='text-3xl font-semibold relative z-20'>
-                        Email en court d'envoie
-                    </p>
+            {infoMessage && (
+                <div className='absolute top-0 left-0 z-10 w-full h-full flex items-center justify-center flex-col'>
+                    {infoMessage === 'loading' && (
+                        <>
+                            <div className='absolute place-self-center z-10 opacity-80 loader' />
+                            <p className='text-4xl font-bold relative z-20'>
+                                E-mail en cours d'envoie
+                            </p>
+                        </>
+                    )}
+                    {infoMessage === 'sendGif' && (
+                        <>
+                            <Image
+                                src='/images/dunk-email-send.gif'
+                                alt="Dunk d'e-mail"
+                                width={640}
+                                height={400}
+                                unoptimized
+                            />
+                        </>
+                    )}
+                    {infoMessage === 'sendMessage' && (
+                        <div className='relative z-20 border border-white  h-full w-full flex justify-center items-center'>
+                            <p className='text-4xl text-center font-bold'>
+                                Merci pour votre message, il a bien été envoyé.
+                                Je vous répondrais dès que{' '}
+                                <span className='text-nowrap'>possible !</span>
+                            </p>
+                        </div>
+                    )}
+                    {infoMessage === 'errorGif' && (
+                        <>
+                            <Image
+                                src='/images/bug-email-send.gif'
+                                alt="Dunk d'e-mail"
+                                width={640}
+                                height={400}
+                                unoptimized
+                            />
+                        </>
+                    )}
+                    {infoMessage === 'errorMessage' && (
+                        <div className='relative z-20 border border-white  h-full w-full flex flex-col justify-center items-center gap-6'>
+                            <p className='text-4xl text-center font-bold'>
+                                Oh non, un bug... Veuillez me contacter
+                                directement à travers mon adresse{' '}
+                                <span className='text-nowrap'>e-mail</span>
+                            </p>
+                            <Button
+                                href='mailto:contact@quentin-sebire.fr'
+                                label='Envoyer un message'
+                            />
+                        </div>
+                    )}
                 </div>
             )}
         </div>

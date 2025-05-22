@@ -76,10 +76,9 @@ const Hero = ({ projects }: { projects: projectType[] }) => {
                     Réalisations
                 </h1>
                 <p
-                    className='absolute text-[16.5vw] font-bold text-center text-nowrap text-background z-10 gradient-background-text-animated'
+                    className='absolute text-[16.5vw] font-bold text-center text-nowrap z-10 gradient-background-text-animated'
                     style={{
-                        WebkitTextStroke: 6,
-                        WebkitTextStrokeColor: '#db2777',
+                        WebkitTextStroke: 8,
                     }}
                 >
                     Réalisations

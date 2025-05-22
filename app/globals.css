@@ -118,7 +118,7 @@ body {
         padding: 10px;
         box-sizing: border-box;
         display: grid;
-        filter: blur(5px) contrast(10) hue-rotate(300deg);
+        filter: blur(2px);
     }
     .loader:before,
     .loader:after {

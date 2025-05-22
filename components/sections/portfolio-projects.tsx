@@ -31,9 +31,14 @@ const ProjectTitleAnimation = ({ title }: { title: string }) => {
             <div
                 className={cn(sharedBlockStyle, 'group-hover:translate-y-full')}
             >
-                <div className='w-full h-[4.5vw] overflow-hidden absolute top-0'>
+                <div className='w-full h-[4.5vw] overflow-hidden'>
                     <p className={cn(sharedTitleStyle, '-mt-[5.5vw]')}>
                         {title}
+                    </p>
+                </div>
+                <div className='flex justify-center pt-8 lg:hidden'>
+                    <p className='border bg-white text-background py-1 px-5 rounded font-semibold'>
+                        Voir
                     </p>
                 </div>
             </div>
@@ -86,7 +91,7 @@ const ProjectInnerContent = ({ project }: { project: projectType }) => {
             </div>
             <div className='space-y-6 xl:col-span-3 row-start-1'>
                 <div className='space-y-3'>
-                    <h2 className='text-4xl sm:text-4xl font-bold'>{title}</h2>
+                    <h2 className='text-4xl sm:text-5xl font-bold'>{title}</h2>
                     <p className='text-lg sm:text-xl font-medium leading-snug'>
                         {description}
                     </p>
@@ -195,7 +200,7 @@ const PortfolioProjects = ({ projects }: { projects: projectType[] }) => {
 
     return (
         <div className='relative -mt-[60px]'>
-            <div className='flex justify-center items-center gap-3 flex-wrap p-2 border-[0.5px] border-white sticky top-[calc(100vh-60px)] z-50 bg-background w-fit m-auto rounded-full'>
+            <div className='hidden justify-center items-center gap-3 flex-wrap p-2 border-[0.5px] border-white sticky top-[calc(100vh-60px)] z-50 bg-background w-fit m-auto rounded-full'>
                 <p className='text-lg font-medium ml-4'>Filtres :</p>
                 {filtersDisplay}
             </div>

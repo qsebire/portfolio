@@ -54,10 +54,10 @@ const ContactTextElement = ({
 const ContactSection = () => {
     return (
         <div className='min-h-screen z-[70] -mt-[60px] gradient-background-animated relative flex justify-center items-center'>
-            <div className='relative w-4/5 max-w-screen-xl -mt-[100px]'>
-                <div className='absolute top-0 left-0 w-full h-full bg-background border-2 border-pink-600 opacity-90 rounded-lg' />
-                <div className='grid grid-cols-3 gap-6 rounded-lg px-10 pt-10 pb-20 relative z-10'>
-                    <div className='col-span-1 flex flex-col gap-4 justify-between'>
+            <div className='relative w-4/5 max-w-screen-xl lg:-mt-[100px]'>
+                <div className='absolute top-0 left-0 w-full h-full bg-background opacity-90 rounded-lg' />
+                <div className='grid lg:grid-cols-5 gap-14 lg:gap-6 rounded-lg px-10 pt-16 lg:pt-10 pb-[4vw] relative z-10'>
+                    <div className='lg:col-span-2 flex flex-col gap-4 justify-between'>
                         <div className='space-y-4'>
                             <ContactTextElement
                                 label='Téléphone'
@@ -78,21 +78,20 @@ const ContactSection = () => {
                             />
                         </div>
                     </div>
-                    <div className='col-span-2'>
+                    <div className='lg:col-span-3'>
                         <ContactForm />
                     </div>
                 </div>
+                <h2 className='absolute max-lg:-top-[6vw] lg:-bottom-[3vw] left-1/2 max-lg:-translate-x-1/2 lg:-left-[3vw] text-[11vw] lg:text-[8vw] text-nowrap leading-none font-bold z-30 pointer-events-none'>
+                    Contactez-moi
+                </h2>
                 <p
-                    className='absolute -bottom-[140px] -left-[100px] text-[280px] leading-none font-bold z-20 pointer-events-none '
+                    className='absolute max-lg:-top-[6vw] lg:-bottom-[3vw] left-1/2 max-lg:-translate-x-1/2 lg:-left-[3vw] text-[11vw] lg:text-[8vw] text-nowrap leading-none font-bold z-20 pointer-events-none gradient-background-text-animated'
                     style={{
                         WebkitTextStroke: 6,
-                        WebkitTextStrokeColor: 'white',
                     }}
                 >
-                    Contact
-                </p>
-                <p className='absolute -bottom-[140px] -left-[100px] text-[280px] leading-none font-bold z-30 pointer-events-none gradient-background-text-animated'>
-                    Contact
+                    Contactez-moi
                 </p>
             </div>
         </div>
