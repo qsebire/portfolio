@@ -41,6 +41,8 @@ const ContactForm = () => {
         const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
         const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
 
+        let hasSendingError = false;
+
         try {
             setInfoMessage('loading');
             await emailjs.send(serviceId, templateId, {
@@ -51,17 +53,19 @@ const ContactForm = () => {
                 message: formRefs.current.message.value,
             });
         } catch (error) {
+            hasSendingError = true;
             console.log(error);
             setInfoMessage('errorGif');
             setTimeout(() => {
                 setInfoMessage('errorMessage');
             }, 2500);
-            return;
         } finally {
-            setInfoMessage('sendGif');
-            setTimeout(() => {
-                setInfoMessage('sendMessage');
-            }, 4000);
+            if (!hasSendingError) {
+                setInfoMessage('sendGif');
+                setTimeout(() => {
+                    setInfoMessage('sendMessage');
+                }, 4000);
+            }
         }
     };
 
