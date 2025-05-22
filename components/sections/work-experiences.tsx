@@ -16,8 +16,9 @@ function WorkExperiences() {
             <WorkExperienceListSingle
                 key={index}
                 work={work}
-                onClick={() => setShowDetails(isOpen ? null : index)}
-                isOpen={isOpen}
+                onClick={() => {
+                    setShowDetails(isOpen ? null : index);
+                }}
             />
         );
     });
