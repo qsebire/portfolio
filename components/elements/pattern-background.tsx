@@ -424,4 +424,5 @@ function PatternBackground() {
     );
 }
 
+PatternBackground.displayName = 'PatternBackground';
 export default PatternBackground;

@@ -29,4 +29,5 @@ function AnimateChevronDown({ anchor }: { anchor: string }) {
     );
 }
 
+AnimateChevronDown.displayName = 'AnimateChevronDown';
 export default AnimateChevronDown;

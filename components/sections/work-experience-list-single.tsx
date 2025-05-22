@@ -5,11 +5,9 @@ import { MouseEventHandler } from 'react';
 function WorkExperienceListSingle({
     work,
     onClick,
-    isOpen,
 }: {
     work: workExperienceType;
     onClick: MouseEventHandler<HTMLButtonElement>;
-    isOpen: boolean;
 }) {
     const { title, subtitle, dates, company } = work;
 

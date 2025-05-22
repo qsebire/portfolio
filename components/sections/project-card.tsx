@@ -1,4 +1,4 @@
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import Button from '../elements/button';
 import Tag from '../elements/tag';
 import Link from 'next/link';
@@ -33,7 +33,17 @@ function ProjectCard({
                 <div className='flex gap-2 flex-wrap'>{categories}</div>
             </div>
             <div className='absolute -top-6 -right-6 z-0 opacity-10 w-3/4 group-hover:z-20 group-hover:opacity-100 group-hover:top-0 group-hover:right-0 group-hover:w-full transition-all duration-700 h-full'>
-                <Link href={link}>
+                {link ? (
+                    <Link href={link}>
+                        <Image
+                            src={imageSrc}
+                            alt={imageAlt}
+                            width={800}
+                            height={800}
+                            className='h-full object-contain object-right-top group-hover:object-center'
+                        />
+                    </Link>
+                ) : (
                     <Image
                         src={imageSrc}
                         alt={imageAlt}
@@ -41,7 +51,7 @@ function ProjectCard({
                         height={800}
                         className='h-full object-contain object-right-top group-hover:object-center'
                     />
-                </Link>
+                )}
                 {siteLink && (
                     <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity'>
                         <Button

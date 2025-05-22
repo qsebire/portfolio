@@ -103,4 +103,5 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaPorps>(
     }
 );
 
+TextArea.displayName = 'TextArea';
 export default TextArea;

@@ -32,4 +32,5 @@ const LoopTextsAnimation = ({ textArr }: { textArr: string[] }) => {
     );
 };
 
+LoopTextsAnimation.displayName = 'LoopTextsAnimation';
 export default LoopTextsAnimation;

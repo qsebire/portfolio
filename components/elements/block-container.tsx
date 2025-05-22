@@ -19,4 +19,5 @@ function BlockContainer({
     );
 }
 
+BlockContainer.displayName = 'BlockContainer';
 export default BlockContainer;

@@ -17,4 +17,5 @@ function ArrowLink({ label, link }: { label: string; link: string }) {
     );
 }
 
+ArrowLink.displayName = 'ArrowLink';
 export default ArrowLink;

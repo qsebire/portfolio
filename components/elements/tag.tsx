@@ -52,4 +52,5 @@ function Tag({
     );
 }
 
+Tag.displayName = 'Tag';
 export default Tag;

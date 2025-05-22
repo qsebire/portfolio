@@ -51,6 +51,7 @@ const ContactForm = () => {
                 message: formRefs.current.message.value,
             });
         } catch (error) {
+            console.log(error);
             setInfoMessage('errorGif');
             setTimeout(() => {
                 setInfoMessage('errorMessage');
@@ -130,7 +131,7 @@ const ContactForm = () => {
                         <>
                             <div className='absolute place-self-center z-10 opacity-80 loader' />
                             <p className='text-4xl font-bold relative z-20'>
-                                E-mail en cours d'envoie
+                                E-mail en cours d&rsquo;envoie
                             </p>
                         </>
                     )}

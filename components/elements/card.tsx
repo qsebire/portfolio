@@ -30,4 +30,5 @@ function CardHome({
     );
 }
 
+CardHome.displayName = 'CardHome';
 export default CardHome;

@@ -65,4 +65,5 @@ const CursorButton = ({
     );
 };
 
+CursorButton.displayName = 'CursorButton';
 export default CursorButton;
