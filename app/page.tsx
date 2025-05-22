@@ -12,7 +12,7 @@ export default function Home() {
     const shuffledProjects = shuffleArray(PROJECTS);
 
     return (
-        <div className='w-screen overflow-hidden'>
+        <div className='w-screen'>
             <div className='sticky top-0 bg-background'>
                 <Hero />
             </div>

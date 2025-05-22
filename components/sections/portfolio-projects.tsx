@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Tag from '../elements/tag';
 import Button from '../elements/button';
@@ -17,7 +17,7 @@ const ProjectTitleAnimation = ({ title }: { title: string }) => {
         'text-[10vw] leading-[10vw] font-bold text-center text-nowrap';
 
     return (
-        <div className='absolute w-full h-full left-0 top-0'>
+        <div className='absolute w-full h-full left-0 top-0 pointer-events-none'>
             <div
                 className={cn(
                     sharedBlockStyle,
@@ -46,7 +46,13 @@ const ProjectTitleAnimation = ({ title }: { title: string }) => {
     );
 };
 
-const ProjectInnerContent = ({ project }: { project: projectType }) => {
+const ProjectInnerContent = ({
+    project,
+    disableInteraction,
+}: {
+    project: projectType;
+    disableInteraction: boolean;
+}) => {
     const { catArr, link, siteLink, imageSrc, imageAlt, description, title } =
         project;
 
@@ -61,8 +67,21 @@ const ProjectInnerContent = ({ project }: { project: projectType }) => {
         );
     });
 
+    const ProjectImage = () => (
+        <Image
+            src={imageSrc}
+            alt={imageAlt}
+            width={1440}
+            height={960}
+            className='object-contain w-full h-full object-center max-h-[30vh] lg:max-h-full'
+        />
+    );
+
     return (
-        <div className='h-full z-10 p-10 gradient-background grid lg:grid-cols-2 xl:grid-cols-7 gap-10 items-center'>
+        <div
+            className='h-full z-10 p-10 gradient-background grid lg:grid-cols-2 xl:grid-cols-7 gap-10 items-center'
+            style={disableInteraction ? { pointerEvents: 'none' } : undefined}
+        >
             <div className='w-full h-full overflow-hidden xl:col-span-4 row-start-2 lg:row-start-1'>
                 {link ||
                     (siteLink && (
@@ -70,24 +89,10 @@ const ProjectInnerContent = ({ project }: { project: projectType }) => {
                             href={link ? link : siteLink}
                             target='_blank'
                         >
-                            <Image
-                                src={imageSrc}
-                                alt={imageAlt}
-                                width={1440}
-                                height={960}
-                                className='object-contain w-full h-full object-center max-h-[60vh]'
-                            />
+                            <ProjectImage />
                         </Link>
                     ))}
-                {!link && !siteLink && (
-                    <Image
-                        src={imageSrc}
-                        alt={imageAlt}
-                        width={1440}
-                        height={960}
-                        className='object-contain w-full h-full object-center max-h-[30vh] lg:max-h-full'
-                    />
-                )}
+                {!link && !siteLink && <ProjectImage />}
             </div>
             <div className='space-y-6 xl:col-span-3 row-start-1'>
                 <div className='space-y-3'>
@@ -119,15 +124,37 @@ const ProjectInnerContent = ({ project }: { project: projectType }) => {
     );
 };
 
-const Project = ({ project }: { project: projectType }) => {
+const Project = ({
+    project,
+    isOpen,
+}: {
+    project: projectType;
+    isOpen: boolean;
+}) => {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 1024);
+        };
+
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     return (
         <div
             id={slugify(project.title)}
             className='scroll-mt-[20vh]'
         >
-            <div className='relative lg:h-[70vh] overflow-hidden group border-t last:border-b border-white'>
+            <div className='relative lg:h-[80vh] overflow-hidden group border-t last:border-b border-white'>
                 <ProjectTitleAnimation title={project.title} />
-                <ProjectInnerContent project={project} />
+                <ProjectInnerContent
+                    project={project}
+                    disableInteraction={isMobile && !isOpen}
+                />
             </div>
         </div>
     );
@@ -135,6 +162,9 @@ const Project = ({ project }: { project: projectType }) => {
 
 const PortfolioProjects = ({ projects }: { projects: projectType[] }) => {
     const [filters, setFilters] = useState<string[]>([]);
+    const [projectCurrentlyOpen, setProjectCurrentlyOpen] = useState<
+        string | undefined
+    >(undefined);
 
     function handleFilter(filterName: string) {
         if (filters.includes(filterName)) {
@@ -190,16 +220,23 @@ const PortfolioProjects = ({ projects }: { projects: projectType[] }) => {
         );
         if (isFiltered || filters.length === 0) {
             return (
-                <Project
-                    project={project}
-                    key={index}
-                />
+                <div
+                    className='sticky top-0'
+                    style={{ zIndex: index }}
+                    key={project.title}
+                    onClick={() => setProjectCurrentlyOpen(project.title)}
+                >
+                    <Project
+                        project={project}
+                        isOpen={projectCurrentlyOpen === project.title}
+                    />
+                </div>
             );
         }
     });
 
     return (
-        <div className='relative -mt-[60px]'>
+        <div className='relative'>
             <div className='hidden justify-center items-center gap-3 flex-wrap p-2 border-[0.5px] border-white sticky top-[calc(100vh-60px)] z-50 bg-background w-fit m-auto rounded-full'>
                 <p className='text-lg font-medium ml-4'>Filtres :</p>
                 {filtersDisplay}

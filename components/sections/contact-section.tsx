@@ -53,10 +53,10 @@ const ContactTextElement = ({
 
 const ContactSection = () => {
     return (
-        <div className='min-h-screen z-[70] -mt-[60px] gradient-background-animated relative flex justify-center items-center'>
+        <div className='min-h-screen z-[70] gradient-background-animated relative flex justify-center items-center'>
             <div className='relative w-4/5 max-w-screen-xl lg:-mt-[100px]'>
                 <div className='absolute top-0 left-0 w-full h-full bg-background opacity-90 rounded-lg' />
-                <div className='grid lg:grid-cols-5 gap-14 lg:gap-6 rounded-lg px-10 pt-16 lg:pt-10 pb-[4vw] relative z-10'>
+                <div className='grid lg:grid-cols-5 gap-14 lg:gap-6 rounded-lg px-10 pt-10 pb-10 lg:pb-[4vw] relative z-10'>
                     <div className='lg:col-span-2 flex flex-col gap-4 justify-between'>
                         <div className='space-y-4'>
                             <ContactTextElement
@@ -82,11 +82,11 @@ const ContactSection = () => {
                         <ContactForm />
                     </div>
                 </div>
-                <h2 className='absolute max-lg:-top-[6vw] lg:-bottom-[3vw] left-1/2 max-lg:-translate-x-1/2 lg:-left-[3vw] text-[11vw] lg:text-[8vw] text-nowrap leading-none font-bold z-30 pointer-events-none'>
+                <h2 className='absolute -bottom-[12vw] lg:-bottom-[3vw] left-1/2 max-lg:-translate-x-1/2 lg:-left-[3vw] text-[11vw] lg:text-[8vw] text-nowrap leading-none font-bold z-30 pointer-events-none'>
                     Contactez-moi
                 </h2>
                 <p
-                    className='absolute max-lg:-top-[6vw] lg:-bottom-[3vw] left-1/2 max-lg:-translate-x-1/2 lg:-left-[3vw] text-[11vw] lg:text-[8vw] text-nowrap leading-none font-bold z-20 pointer-events-none gradient-background-text-animated'
+                    className='absolute -bottom-[12vw] lg:-bottom-[3vw] left-1/2 max-lg:-translate-x-1/2 lg:-left-[3vw] text-[11vw] lg:text-[8vw] text-nowrap leading-none font-bold z-20 pointer-events-none gradient-background-text-animated'
                     style={{
                         WebkitTextStroke: 6,
                     }}

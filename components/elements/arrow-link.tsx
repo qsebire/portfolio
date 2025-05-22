@@ -1,11 +1,6 @@
 import Link from 'next/link';
 import { ChevronDown } from 'lucide-react';
 
-type typeElementSize = {
-    width: number;
-    height: number;
-};
-
 function ArrowLink({ label, link }: { label: string; link: string }) {
     return (
         <div className='group'>
