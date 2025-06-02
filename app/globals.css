@@ -73,7 +73,10 @@ body {
                 #090623 80%
             );
         background-blend-mode: overlay;
-        background-size: 120vw 120vh;
+        background-size:
+            1200px 1200px,
+            120vw 120vh;
+        background-repeat: repeat, no-repeat;
         animation: gradient-animation 40s linear infinite;
     }
 
@@ -89,6 +92,10 @@ body {
                 #2e1065 70%,
                 #090623 80%
             );
+        background-size:
+            1000px 1000px,
+            100%;
+        background-repeat: repeat, no-repeat;
         background-blend-mode: overlay;
     }
 
@@ -106,7 +113,10 @@ body {
                 #090623 80%
             );
         background-blend-mode: overlay;
-        background-size: 120vw 120vh;
+        background-size:
+            1200px 1200px,
+            120vw 120vh;
+        background-repeat: repeat, no-repeat;
         animation: gradient-animation 40s linear infinite;
         background-clip: text;
         color: transparent;
