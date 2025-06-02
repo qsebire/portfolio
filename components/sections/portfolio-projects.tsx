@@ -26,9 +26,11 @@ const ProjectTitleAnimation = ({ title }: { title: string }) => {
             >
                 <div className='w-full h-[5.5vw] overflow-hidden absolute bottom-0 flex justify-center gap-4'>
                     <p className={sharedTitleStyle}>{title}</p>
-                    <p className='border bg-white text-background text-sm leading-none h-6 flex items-center px-3 rounded font-semibold lg:hidden relative -bottom-[10px]'>
-                        Voir
-                    </p>
+                    <div className='h-full relative'>
+                        <p className='border bg-white text-background text-sm leading-none py-1 px-3 rounded font-semibold lg:hidden absolute -bottom-[12px]'>
+                            Voir
+                        </p>
+                    </div>
                 </div>
             </div>
             <div
@@ -38,9 +40,11 @@ const ProjectTitleAnimation = ({ title }: { title: string }) => {
                     <p className={cn(sharedTitleStyle, '-mt-[5.5vw]')}>
                         {title}
                     </p>
-                    <p className='border bg-white text-background text-sm leading-none h-6 flex items-center px-3 rounded font-semibold  lg:hidden relative -top-[12px]'>
-                        Voir
-                    </p>
+                    <div className='h-full relative'>
+                        <p className='border bg-white text-background text-sm leading-none py-1 px-3 rounded font-semibold lg:hidden absolute -top-[12px]'>
+                            Voir
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -150,7 +154,7 @@ const Project = ({
             id={slugify(project.title)}
             className='scroll-mt-[20vh]'
         >
-            <div className='group relative h-[10vh] hover:h-fit  lg:h-[80vh] hover:lg:h-[80vh] overflow-hidden  border-t last:border-b border-white'>
+            <div className='group relative h-[14vw] hover:h-fit  lg:h-[80vh] hover:lg:h-[80vh] overflow-hidden  border-t last:border-b border-white'>
                 <ProjectTitleAnimation title={project.title} />
                 <ProjectInnerContent
                     project={project}

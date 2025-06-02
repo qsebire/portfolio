@@ -17,7 +17,7 @@ export default function Home() {
             </div>
             <div
                 id='top'
-                className='bg-background z-10 relative'
+                className='z-10 relative lg:bg-background'
             >
                 <HeroRealisations projects={shuffledProjects} />
                 <PortfolioProjects projects={shuffledProjects} />

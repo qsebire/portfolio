@@ -86,7 +86,7 @@ const Hero = () => {
         <a href='#top'>
             <div
                 ref={containerRef}
-                className='relative h-screen w-screen overflow-hidden'
+                className='relative h-[90vh] lg:h-screen w-screen overflow-hidden'
             >
                 <CursorButton
                     content='Icon'

@@ -57,7 +57,7 @@ const ProjectsImages = ({ projects }: { projects: projectType[] }) => {
 
     return (
         <div
-            className='grid content-center items-center gap-[10vw] px-20 absolute top-0 left-0 w-full h-full grid-cols-3'
+            className='grid content-center items-center gap-[10vw] py-[6vh]'
             style={{ gridTemplateColumns: `repeat(${COLUMN_COUNT}, 1fr)` }}
         >
             {displayedProjects.map((project, index) => {
@@ -77,15 +77,15 @@ const ProjectsImages = ({ projects }: { projects: projectType[] }) => {
 
 const Hero = ({ projects }: { projects: projectType[] }) => {
     return (
-        <div className='relative lg:h-screen w-full overflow-hidden bg-background'>
-            <div className='relative z-10 py-40 h-full flex justify-center items-center pointer-events-none'>
+        <div className='relative w-full overflow-hidden lg:bg-background'>
+            <div className='relative lg:absolute z-10 h-full flex justify-center items-center pointer-events-none'>
                 <h1 className='text-[15vw] font-bold text-center text-nowrap z-20 gradient-background-text-animated'>
                     Réalisations
                 </h1>
                 <span
                     className='absolute text-[15vw] font-bold text-white text-nowrap z-10'
                     style={{
-                        WebkitTextStroke: 12,
+                        WebkitTextStroke: '1vw',
                     }}
                 >
                     Réalisations
