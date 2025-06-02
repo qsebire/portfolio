@@ -77,13 +77,13 @@ const ProjectsImages = ({ projects }: { projects: projectType[] }) => {
 
 const Hero = ({ projects }: { projects: projectType[] }) => {
     return (
-        <div className='relative lg:h-screen w-full overflow-hidden gradient-background-animated'>
+        <div className='relative lg:h-screen w-full overflow-hidden bg-background'>
             <div className='relative z-10 py-40 h-full flex justify-center items-center pointer-events-none'>
-                <h1 className='text-[17vw] font-bold text-center text-nowrap z-20 gradient-background-text-animated'>
+                <h1 className='text-[15vw] font-bold text-center text-nowrap z-20 gradient-background-text-animated'>
                     Réalisations
                 </h1>
                 <span
-                    className='absolute text-[17vw] font-bold text-white text-nowrap z-10'
+                    className='absolute text-[15vw] font-bold text-white text-nowrap z-10'
                     style={{
                         WebkitTextStroke: 12,
                     }}

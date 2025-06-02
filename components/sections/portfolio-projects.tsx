@@ -24,20 +24,21 @@ const ProjectTitleAnimation = ({ title }: { title: string }) => {
                     'group-hover:-translate-y-full'
                 )}
             >
-                <div className='w-full h-[5.5vw] overflow-hidden absolute bottom-0 '>
+                <div className='w-full h-[5.5vw] overflow-hidden absolute bottom-0 flex justify-center gap-4'>
                     <p className={sharedTitleStyle}>{title}</p>
+                    <p className='border bg-white text-background text-sm leading-none h-6 flex items-center px-3 rounded font-semibold lg:hidden relative -bottom-[10px]'>
+                        Voir
+                    </p>
                 </div>
             </div>
             <div
                 className={cn(sharedBlockStyle, 'group-hover:translate-y-full')}
             >
-                <div className='w-full h-[4.5vw] overflow-hidden'>
+                <div className='w-full h-[4.5vw] overflow-hidden flex justify-center gap-4'>
                     <p className={cn(sharedTitleStyle, '-mt-[5.5vw]')}>
                         {title}
                     </p>
-                </div>
-                <div className='flex justify-center pt-8 lg:hidden'>
-                    <p className='border bg-white text-background py-1 px-5 rounded font-semibold'>
+                    <p className='border bg-white text-background text-sm leading-none h-6 flex items-center px-3 rounded font-semibold  lg:hidden relative -top-[12px]'>
                         Voir
                     </p>
                 </div>
@@ -149,7 +150,7 @@ const Project = ({
             id={slugify(project.title)}
             className='scroll-mt-[20vh]'
         >
-            <div className='relative lg:h-[80vh] overflow-hidden group border-t last:border-b border-white'>
+            <div className='group relative h-[10vh] hover:h-fit  lg:h-[80vh] hover:lg:h-[80vh] overflow-hidden  border-t last:border-b border-white'>
                 <ProjectTitleAnimation title={project.title} />
                 <ProjectInnerContent
                     project={project}
@@ -221,7 +222,7 @@ const PortfolioProjects = ({ projects }: { projects: projectType[] }) => {
         if (isFiltered || filters.length === 0) {
             return (
                 <div
-                    className='sticky top-0'
+                    className='lg:sticky lg:top-0'
                     style={{ zIndex: index }}
                     key={project.title}
                     onClick={() => setProjectCurrentlyOpen(project.title)}
