@@ -10,6 +10,9 @@ export const metadata: Metadata = {
     title: 'Quentin Sébire - Portfolio',
     description:
         'Portfolio de Quentin Sébire, Développeur Web JavaScript, React & React Native',
+    icons: {
+        icon: '/favicon.ico',
+    },
 };
 
 export default function RootLayout({
