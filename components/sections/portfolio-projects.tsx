@@ -171,13 +171,13 @@ const PortfolioProjects = ({ projects }: { projects: projectType[] }) => {
         string | undefined
     >(undefined);
 
-    function handleFilter(filterName: string) {
-        if (filters.includes(filterName)) {
-            setFilters(filters.filter((filter) => filter !== filterName));
-            return;
-        }
-        setFilters([...filters, filterName]);
-    }
+    // function handleFilter(filterName: string) {
+    //     if (filters.includes(filterName)) {
+    //         setFilters(filters.filter((filter) => filter !== filterName));
+    //         return;
+    //     }
+    //     setFilters([...filters, filterName]);
+    // }
 
     // Get categories used in projects without duplicates
     const projectsCategories = [
@@ -198,26 +198,26 @@ const PortfolioProjects = ({ projects }: { projects: projectType[] }) => {
         return 0;
     });
 
-    const filtersDisplay = projectsCategories.map((cat, id) => {
-        const isFiltered = filters.includes(cat.label);
-        return (
-            <button
-                onClick={() => handleFilter(cat.label)}
-                style={
-                    isFiltered
-                        ? {
-                              background: 'white',
-                              color: 'var(--background)',
-                          }
-                        : undefined
-                }
-                className='block py-[2px] px-4 rounded-full font-medium border hover:bg-white/20'
-                key={id}
-            >
-                {cat.label}
-            </button>
-        );
-    });
+    // const filtersDisplay = projectsCategories.map((cat, id) => {
+    //     const isFiltered = filters.includes(cat.label);
+    //     return (
+    //         <button
+    //             onClick={() => handleFilter(cat.label)}
+    //             style={
+    //                 isFiltered
+    //                     ? {
+    //                           background: 'white',
+    //                           color: 'var(--background)',
+    //                       }
+    //                     : undefined
+    //             }
+    //             className='block py-[2px] px-4 rounded-full font-medium border hover:bg-white/20'
+    //             key={id}
+    //         >
+    //             {cat.label}
+    //         </button>
+    //     );
+    // });
 
     const displayedProjects = projects.map((project, index) => {
         const isFiltered = project.catArr.some((cat) =>
@@ -242,12 +242,12 @@ const PortfolioProjects = ({ projects }: { projects: projectType[] }) => {
 
     return (
         <div className='relative'>
-            <div className='hidden lg:flex justify-center items-center gap-3 flex-wrap p-2 border-[0.5px] border-white sticky top-[calc(100vh-60px)] z-50 bg-background w-fit m-auto rounded-full'>
+            {/* <div className='hidden lg:flex justify-center items-center gap-3 flex-wrap p-2 border-[0.5px] border-white sticky top-[calc(100vh-60px)] z-50 bg-background w-fit m-auto rounded-full'>
                 <p className='text-lg font-medium ml-4'>Filtres :</p>
                 {filtersDisplay}
-            </div>
-            <div className='lg:-mt-12'>{displayedProjects}</div>
-            <div className='relative h-[60px] z-[60] bg-background -mb-[60px]' />
+            </div> */}
+            <div className=''>{displayedProjects}</div>
+            {/* <div className='relative h-[60px] z-[60] bg-background -mb-[60px]' /> */}
         </div>
     );
 };

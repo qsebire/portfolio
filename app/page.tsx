@@ -5,11 +5,7 @@ import ContactSection from '@/components/sections/contact-section';
 
 import { PROJECTS } from '@/data/projects';
 
-import { shuffleArray } from '@/lib/utils';
-
 export default function Home() {
-    const shuffledProjects = shuffleArray(PROJECTS);
-
     return (
         <div className='w-screen'>
             <div className='sticky top-0 bg-background'>
@@ -19,8 +15,8 @@ export default function Home() {
                 id='top'
                 className='z-10 relative lg:bg-background'
             >
-                <HeroRealisations projects={shuffledProjects} />
-                <PortfolioProjects projects={shuffledProjects} />
+                <HeroRealisations projects={PROJECTS} />
+                <PortfolioProjects projects={PROJECTS} />
                 <ContactSection />
             </div>
         </div>
