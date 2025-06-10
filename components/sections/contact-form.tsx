@@ -135,7 +135,7 @@ const ContactForm = () => {
                     {infoMessage === 'loading' && (
                         <>
                             <div className='absolute place-self-center z-10 opacity-80 loader' />
-                            <p className='text-4xl font-bold relative z-20'>
+                            <p className='text-xl lg:text-4xl font-bold relative z-20'>
                                 E-mail en cours d&rsquo;envoie
                             </p>
                         </>
@@ -153,7 +153,7 @@ const ContactForm = () => {
                     )}
                     {infoMessage === 'sendMessage' && (
                         <div className='relative z-20 border border-white  h-full w-full flex justify-center items-center'>
-                            <p className='text-4xl text-center font-bold'>
+                            <p className='text-xl lg:text-4xl text-center font-bold'>
                                 Merci pour votre message, il a bien été envoyé.
                                 Je vous répondrais dès que{' '}
                                 <span className='text-nowrap'>possible !</span>
