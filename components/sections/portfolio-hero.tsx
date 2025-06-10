@@ -77,7 +77,7 @@ const ProjectsImages = ({ projects }: { projects: projectType[] }) => {
 
 const Hero = ({ projects }: { projects: projectType[] }) => {
     return (
-        <div className='relative w-full overflow-hidden lg:bg-background'>
+        <div className='relative w-full overflow-hidden bg-background'>
             <div className='relative lg:absolute z-10 h-full flex justify-center items-center pointer-events-none'>
                 <h1 className='text-[15vw] font-bold text-center text-nowrap z-20 gradient-background-text-animated'>
                     Réalisations

@@ -8,6 +8,7 @@ import LoopTextsAnimation from '../elements/loop-texts-animation';
 import CursorButton from '../elements/cursor-button';
 
 import quentinSebire from '../../public/images/quentin-sebire.jpg';
+import { useIsMobile } from '@/lib/use-is-mobile';
 
 const Hero = () => {
     const jobList = [
@@ -48,6 +49,7 @@ const Hero = () => {
         },
     });
     const [loopStyle, setLoopStyle] = useState({ opacity: 0 });
+    const isMobile = useIsMobile(1024);
 
     useEffect(() => {
         setTimeout(() => {
@@ -83,7 +85,12 @@ const Hero = () => {
     }, []);
 
     return (
-        <a href='#top'>
+        <a
+            href={isMobile ? undefined : '#top'}
+            aria-disabled={isMobile}
+            tabIndex={isMobile ? -1 : 0}
+            className='pointer-events-none lg:pointer-events-auto'
+        >
             <div
                 ref={containerRef}
                 className='relative h-[90vh] lg:h-screen w-screen overflow-hidden'
@@ -91,6 +98,7 @@ const Hero = () => {
                 <CursorButton
                     content='Icon'
                     containerRef={containerRef}
+                    hideOnMobile
                 />
                 <div
                     className='absolute z-50 bottom-0 left-1/2 -translate-x-1/2 w-full transition-all duration-[2s] ease-in-out bg-background'
