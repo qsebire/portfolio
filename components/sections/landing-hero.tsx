@@ -98,7 +98,6 @@ const Hero = () => {
                 <CursorButton
                     content='Icon'
                     containerRef={containerRef}
-                    hideOnMobile
                 />
                 <div
                     className='absolute z-50 bottom-0 left-1/2 -translate-x-1/2 w-full transition-all duration-[2s] ease-in-out bg-background'

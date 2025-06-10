@@ -7,12 +7,10 @@ const CursorButton = ({
     content = 'Voir',
     containerRef,
     gap = 0,
-    hideOnMobile = false,
 }: {
     content?: 'Voir' | 'Icon';
     containerRef: RefObject<HTMLDivElement | null>;
     gap?: number;
-    hideOnMobile?: boolean;
 }) => {
     const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
     const [cursorOpacity, setCursorOpacity] = useState(0);
