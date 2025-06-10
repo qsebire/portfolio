@@ -103,10 +103,9 @@ export const PROJECTS: projectType[] = [
             CATEGORIES.JavaScript,
             CATEGORIES.Maquettage,
         ],
-        description: `Réalisation d’un Pokédex dans le cadre de ma formation de Concepteur Développeur d’Applications, avec pour objectif principal l’apprentissage de l’intégration d’API externes. J’en ai profité pour concevoir un design original et mettre en place un scroll infini permettant de charger dynamiquement les différents Pokémon.`,
+        description: `Réalisation d’un Pokédex dans le cadre de ma formation de Concepteur Développeur d’Applications, avec pour objectif principal l’apprentissage de l’intégration d’API externes. J’en ai profité pour concevoir un design original et mettre en place un scroll infini permettant de charger dynamiquement les différents Pokémon. (PS: Le responsive n'a pas été fait sur ce projet)`,
         shortDescription:
             "Projet d'entraînement à l'utilisation d'une API externe & infinite scroll",
-        siteLink:
-            'https://pokedex-d4wxleqpi-quentins-projects-683360a5.vercel.app/',
+        siteLink: 'https://pokedex-theta-steel-53.vercel.app/',
     },
 ];
